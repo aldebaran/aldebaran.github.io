@@ -1,0 +1,1588 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qi::os &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../../index.html" />
+    <link rel="up" title="C++ qi API Reference" href="index.html" />
+    <link rel="next" title="qi::path namespace" href="path.html" />
+    <link rel="prev" title="qi::ObjectTypeBuilder" href="objecttypebuilder.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>
+         |
+        <a title="Site map" href="../../contents.html">Site map</a>
+         |
+        <a title="Search" href="../../search.html">Search</a>
+         |
+        <a title="Index" href="../../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="objecttypebuilder.html" title="qi::ObjectTypeBuilder">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="path.html" title="qi::path namespace">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="api-cpp-os">
+            
+  <div class="section" id="qi-os">
+<h1>qi::os<a class="headerlink" href="#qi-os" title="Permalink to this headline">¶</a></h1>
+<p>Basic OS abstracted functions.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<strong><p class="rubric">Global Namespaces</p>
+</strong><ul>
+<li><p class="first">namespace qi::os</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (namespace qi::os)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::os::gettid">qi::os::gettid</a><p><a class="reference internal" href="#qi::os::generateUuid">qi::os::generateUuid</a></p>
+<p><a class="reference internal" href="#qi::os::numberOfCPUs">qi::os::numberOfCPUs</a></p>
+<p><a class="reference internal" href="#qi::os::getMachineId">qi::os::getMachineId</a></p>
+<p><a class="reference internal" href="#qi::os::mktmpdir__cCP">qi::os::mktmpdir</a></p>
+<p><a class="reference internal" href="#qi::os::findAvailablePort__unsigned-short-i">qi::os::findAvailablePort</a></p>
+<p><a class="reference internal" href="#qi::os::home">qi::os::home</a></p>
+<p><a class="reference internal" href="#qi::os::gethostname">qi::os::gethostname</a></p>
+<p><a class="reference internal" href="#qi::os::kill__i.i">qi::os::kill</a></p>
+<p><a class="reference internal" href="#qi::os::spawnlp__cCP.X">qi::os::spawnlp</a></p>
+<p><a class="reference internal" href="#qi::os::setenv__cCP.cCP">qi::os::setenv</a></p>
+<p><a class="reference internal" href="#qi::os::getpid">qi::os::getpid</a></p>
+<p><a class="reference internal" href="#qi::os::setCurrentThreadCPUAffinity__std::vector:i:CR">qi::os::setCurrentThreadCPUAffinity</a></p>
+<p><a class="reference internal" href="#qi::os::sleep__unsigned-i">qi::os::sleep</a></p>
+<p><a class="reference internal" href="#qi::os::cputime">qi::os::cputime</a></p>
+<p><a class="reference internal" href="#qi::os::checkdbg">qi::os::checkdbg</a></p>
+<p><a class="reference internal" href="#qi::os::dlopen__cCP.i">qi::os::dlopen</a></p>
+<p><a class="reference internal" href="#qi::os::strdup__cCP">qi::os::strdup</a></p>
+<p><a class="reference internal" href="#qi::os::gettimeofday__qi::os::timevalP">qi::os::gettimeofday</a></p>
+<p><a class="reference internal" href="#qi::os::msleep__unsigned-i">qi::os::msleep</a></p>
+<p><a class="reference internal" href="#qi::os::dlsym__voidP.cCP">qi::os::dlsym</a></p>
+<p><a class="reference internal" href="#qi::os::fopen__cCP.cCP">qi::os::fopen</a></p>
+<p><a class="reference internal" href="#qi::os::pathsep">qi::os::pathsep</a></p>
+<p><a class="reference internal" href="#qi::os::spawnvp__cPCA">qi::os::spawnvp</a></p>
+<p><a class="reference internal" href="#qi::os::waitpid__i.iP">qi::os::waitpid</a></p>
+<p><a class="reference internal" href="#qi::os::dlerror">qi::os::dlerror</a></p>
+<p><a class="reference internal" href="#qi::os::tmp">qi::os::tmp</a></p>
+<p><a class="reference internal" href="#qi::os::isatty__i">qi::os::isatty</a></p>
+<p><a class="reference internal" href="#qi::os::timezone">qi::os::timezone</a></p>
+<p><a class="reference internal" href="#qi::os::dlclose__voidP">qi::os::dlclose</a></p>
+<p><a class="reference internal" href="#qi::os::fnmatch__ssCR.ssCR">qi::os::fnmatch</a></p>
+<p><a class="reference internal" href="#qi::os::setCurrentThreadName__ssCR">qi::os::setCurrentThreadName</a></p>
+<p><a class="reference internal" href="#qi::os::hostIPAddrs__b">qi::os::hostIPAddrs</a></p>
+<p><a class="reference internal" href="#qi::os::snprintf__cP.s.cCP.X">qi::os::snprintf</a></p>
+<p><a class="reference internal" href="#qi::os::memoryUsage__unsigned-i">qi::os::memoryUsage</a></p>
+<p><a class="reference internal" href="#qi::os::currentThreadName">qi::os::currentThreadName</a></p>
+<p><a class="reference internal" href="#qi::os::symlink__qi::PathCR.qi::PathCR">qi::os::symlink</a></p>
+<p><a class="reference internal" href="#qi::os::getenv__cCP">qi::os::getenv</a></p>
+<p><a class="reference internal" href="#qi::os::stat__cCP.struct-statP">qi::os::stat</a></p>
+<p><a class="reference internal" href="#qi::os::system__cCP">qi::os::system</a></p>
+<p><a class="reference internal" href="#qi::os::ustime">qi::os::ustime</a></p>
+<p><a class="reference internal" href="#qi::os::sub-operator__qi::os::timevalCR.qi::os::timevalCR">qi::os::operator-</a></p>
+<p><a class="reference internal" href="#qi::os::add-operator__qi::os::timevalCR.qi::os::timevalCR">qi::os::operator+</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+</dl>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qi-os-namespace-reference">
+<h3>qi::os Namespace Reference<a class="headerlink" href="#qi-os-namespace-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p>OS abstraction layer.  qi/os.hpp .  <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+</div>
+<div class="section" id="inner-definitions">
+<h4>Inner Definitions<a class="headerlink" href="#inner-definitions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="classes">
+<h5>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Brief</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">qi::os::timeval</span></tt></td>
+<td>struct similar to POSIX timeval </td>
+</tr>
+<tr class="row-odd"><td><tt class="docutils literal"><span class="pre">qi::os::ScopedThreadName</span></tt></td>
+<td>Set the current thread name and restore it after use. </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h5>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Brief</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">qi::os::getEnvDefault</span></tt></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::fopen__cCP.cCP"><tt class="docutils literal"><span class="pre">qi::os::fopen</span></tt></a></td>
+<td>Open a file and returns and handle on it. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::stat__cCP.struct-statP"><tt class="docutils literal"><span class="pre">qi::os::stat</span></tt></a></td>
+<td>Get file status. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::checkdbg"><tt class="docutils literal"><span class="pre">qi::os::checkdbg</span></tt></a></td>
+<td>Check if the current process is running into a debugger. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::home"><tt class="docutils literal"><span class="pre">qi::os::home</span></tt></a></td>
+<td>Return path to the current user&#8217;s HOME. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::mktmpdir__cCP"><tt class="docutils literal"><span class="pre">qi::os::mktmpdir</span></tt></a></td>
+<td>Return a writable temporary directory. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::tmp"><tt class="docutils literal"><span class="pre">qi::os::tmp</span></tt></a></td>
+<td>Return the system&#8217;s temporary directory. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::symlink__qi::PathCR.qi::PathCR"><tt class="docutils literal"><span class="pre">qi::os::symlink</span></tt></a></td>
+<td>Create a symlink from source to destination. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::gethostname"><tt class="docutils literal"><span class="pre">qi::os::gethostname</span></tt></a></td>
+<td>Get the system&#8217;s hostname. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::isatty__i"><tt class="docutils literal"><span class="pre">qi::os::isatty</span></tt></a></td>
+<td>Test if descriptor represents a terminal. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::fnmatch__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::os::fnmatch</span></tt></a></td>
+<td>Implement POSIX compliant fnmatch. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::strdup__cCP"><tt class="docutils literal"><span class="pre">qi::os::strdup</span></tt></a></td>
+<td>Implement POSIX compliant strdup. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::snprintf__cP.s.cCP.X"><tt class="docutils literal"><span class="pre">qi::os::snprintf</span></tt></a></td>
+<td>Implement POSIX compliant snprintf. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::getenv__cCP"><tt class="docutils literal"><span class="pre">qi::os::getenv</span></tt></a></td>
+<td>Get an environment variable. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::pathsep"><tt class="docutils literal"><span class="pre">qi::os::pathsep</span></tt></a></td>
+<td>Get the path separator. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::setenv__cCP.cCP"><tt class="docutils literal"><span class="pre">qi::os::setenv</span></tt></a></td>
+<td>Change or add an environment variable. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::timezone"><tt class="docutils literal"><span class="pre">qi::os::timezone</span></tt></a></td>
+<td>Return the timezone. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::sleep__unsigned-i"><tt class="docutils literal"><span class="pre">qi::os::sleep</span></tt></a></td>
+<td>Sleep for the specified number of seconds. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::msleep__unsigned-i"><tt class="docutils literal"><span class="pre">qi::os::msleep</span></tt></a></td>
+<td>Sleep for the specified number of milliseconds. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::gettimeofday__qi::os::timevalP"><tt class="docutils literal"><span class="pre">qi::os::gettimeofday</span></tt></a></td>
+<td>The gettimeofday() function shall obtain the current time. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::ustime"><tt class="docutils literal"><span class="pre">qi::os::ustime</span></tt></a></td>
+<td>Elapsed time since program started in microseconds. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::cputime"><tt class="docutils literal"><span class="pre">qi::os::cputime</span></tt></a></td>
+<td>Return CPU time used by the calling thread as a pair (userTime, systemTime) in microseconds. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::add-operator__qi::os::timevalCR.qi::os::timevalCR"><tt class="docutils literal"><span class="pre">qi::os::operator+</span></tt></a></td>
+<td>Add two timeval together. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::add-operator__qi::os::timevalCR.l"><tt class="docutils literal"><span class="pre">qi::os::operator+</span></tt></a></td>
+<td>Add a delay to a timeval (in microsecond) </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::sub-operator__qi::os::timevalCR.qi::os::timevalCR"><tt class="docutils literal"><span class="pre">qi::os::operator-</span></tt></a></td>
+<td>Substract two timeval together. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::sub-operator__qi::os::timevalCR.l"><tt class="docutils literal"><span class="pre">qi::os::operator-</span></tt></a></td>
+<td>Substract a delay to a timeval (in microsecond) </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::dlopen__cCP.i"><tt class="docutils literal"><span class="pre">qi::os::dlopen</span></tt></a></td>
+<td>Load a dynamic library. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::dlclose__voidP"><tt class="docutils literal"><span class="pre">qi::os::dlclose</span></tt></a></td>
+<td>Decrements the reference count on the dynamic library. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::dlsym__voidP.cCP"><tt class="docutils literal"><span class="pre">qi::os::dlsym</span></tt></a></td>
+<td>Get the address where the symbol is loaded into memory. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::dlerror"><tt class="docutils literal"><span class="pre">qi::os::dlerror</span></tt></a></td>
+<td>Returns a human readable string of the error code. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::spawnvp__cPCA"><tt class="docutils literal"><span class="pre">qi::os::spawnvp</span></tt></a></td>
+<td>Create and execute a new process. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::spawnlp__cCP.X"><tt class="docutils literal"><span class="pre">qi::os::spawnlp</span></tt></a></td>
+<td>Create and execute a new process. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::system__cCP"><tt class="docutils literal"><span class="pre">qi::os::system</span></tt></a></td>
+<td>Execute a shell command. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::getpid"><tt class="docutils literal"><span class="pre">qi::os::getpid</span></tt></a></td>
+<td>Get the process identifier. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::gettid"><tt class="docutils literal"><span class="pre">qi::os::gettid</span></tt></a></td>
+<td>Get the thread identifier. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::waitpid__i.iP"><tt class="docutils literal"><span class="pre">qi::os::waitpid</span></tt></a></td>
+<td>Wait for process to change state. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::kill__i.i"><tt class="docutils literal"><span class="pre">qi::os::kill</span></tt></a></td>
+<td>Send a signal to a process. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::findAvailablePort__unsigned-short-i"><tt class="docutils literal"><span class="pre">qi::os::findAvailablePort</span></tt></a></td>
+<td>Find the first available port starting at port number in parameter. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::hostIPAddrs__b"><tt class="docutils literal"><span class="pre">qi::os::hostIPAddrs</span></tt></a></td>
+<td>Find all network adapters and corresponding IPs. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::setCurrentThreadName__ssCR"><tt class="docutils literal"><span class="pre">qi::os::setCurrentThreadName</span></tt></a></td>
+<td>Set the current thread name to the string in parameter. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::currentThreadName"><tt class="docutils literal"><span class="pre">qi::os::currentThreadName</span></tt></a></td>
+<td>returns the current thread name as a std::string </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::setCurrentThreadCPUAffinity__std::vector:i:CR"><tt class="docutils literal"><span class="pre">qi::os::setCurrentThreadCPUAffinity</span></tt></a></td>
+<td>Set the CPU affinity for the current thread. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::numberOfCPUs"><tt class="docutils literal"><span class="pre">qi::os::numberOfCPUs</span></tt></a></td>
+<td>Get the number of CPUs on the local machin. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::getMachineId"><tt class="docutils literal"><span class="pre">qi::os::getMachineId</span></tt></a></td>
+<td>Returns an unique uuid for the machine. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::os::generateUuid"><tt class="docutils literal"><span class="pre">qi::os::generateUuid</span></tt></a></td>
+<td>Generate a universally unique identifier. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::os::memoryUsage__unsigned-i"><tt class="docutils literal"><span class="pre">qi::os::memoryUsage</span></tt></a></td>
+<td>Get the memory usage of a process in kB. </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p><blockquote>
+<div><ul class="simple">
+<li>This module provides some functions following POSIX convention to manipulate</li>
+<li>the operating system layer in a cross-platform way.</li>
+<li></li>
+<li></li>
+<li></li>
+<li>Every path taken in parameter <em>must</em> be encoded in UTF-8. Every path</li>
+<li>returned is encoded in UTF-8.</li>
+<li></li>
+</ul>
+</div></blockquote>
+</p>
+</div>
+<div class="section" id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::os::fopen__cCP.cCP">
+FILE* <tt class="descclassname">qi::os::</tt><tt class="descname">fopen</tt><big>(</big>const char* <em>filename</em>, const char* <em>mode</em><big>)</big><a class="headerlink" href="#qi::os::fopen__cCP.cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Open a file and returns and handle on it. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> &#8211; Path to the file (in UTF-8). </li>
+<li><strong>mode</strong> &#8211; The mode. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A FILE* handle if successful, 0 on error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Nothing special under POSIX systems, it&#8217;s only useful for Windows,</p>
+</li>
+<li><p class="first">where files should be open using a widestring.</p>
+</li>
+<li></li>
+<li><p class="first">Refer to <tt class="docutils literal"><span class="pre">man</span> <span class="pre">3</span> <span class="pre">fopen</span></tt> for more informations on POSIX systems, and to the</p>
+</li>
+<li><p class="first">documentation of _wfopen on MSDN to understand the Windows behaviors.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::stat__cCP.struct-statP">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">stat</tt><big>(</big>const char* <em>filename</em>, struct stat* <em>pstat</em><big>)</big><a class="headerlink" href="#qi::os::stat__cCP.struct-statP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get file status. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> &#8211; Path to the file (in UTF-8). </li>
+<li><strong>pstat</strong> &#8211; A pointer to a stat structure that will be filled by the function. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">0 on success, -1 on error</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Stats the file pointed to by filename and fills in pstat.</p>
+</li>
+<li><p class="first">You need to include &lt;sys/stat.h&gt; to get access to struct.</p>
+</li>
+<li></li>
+<li></li>
+<li><p class="first">explain how to use stat on windows !</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::checkdbg">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">checkdbg</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::checkdbg" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Check if the current process is running into a debugger. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">-1 on error, 1 if debugger is present, 0 otherwise </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::home">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">home</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::home" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Return path to the current user&#8217;s HOME. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">String to user&#8217;s HOME </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::mktmpdir__cCP">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">mktmpdir</tt><big>(</big>const char* <em>prefix</em> = &quot;&quot;<big>)</big><a class="headerlink" href="#qi::os::mktmpdir__cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Return a writable temporary directory. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>prefix</strong> &#8211; Prefix of the tmp file (in UTF-8). </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The path to the temporary directory.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">The caller is responsible for destroying the returned directory. This will</p>
+</li>
+<li><p class="first">create a unique directory in the temporary directory returned by</p>
+</li>
+<li><p class="first"><a class="reference external" href="#qi::os::tmp"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::tmp()</span></tt></a>.</p>
+</li>
+<li></li>
+<li><p class="first">The specified prefix will be prepended to a uniquely generated name.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.1.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::tmp">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">tmp</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::tmp" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Return the system&#8217;s temporary directory. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The path to the system&#8217;s temporary directory.</td>
+</tr>
+</tbody>
+</table>
+<p>The directory is writable and exists. The caller is responsible for destroying the temporary files it creates.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::symlink__qi::PathCR.qi::PathCR">
+void <tt class="descclassname">qi::os::</tt><tt class="descname">symlink</tt><big>(</big>const qi::Path&amp; <em>source</em>, const qi::Path&amp; <em>destination</em><big>)</big><a class="headerlink" href="#qi::os::symlink__qi::PathCR.qi::PathCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a symlink from source to destination.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::gethostname">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">gethostname</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::gethostname" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the system&#8217;s hostname. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The system&#8217;s hostname. An empty string is returned on failure. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::isatty__i">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">isatty</tt><big>(</big>int <em>fd</em> = 1<big>)</big><a class="headerlink" href="#qi::os::isatty__i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Test if descriptor represents a terminal. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fd</strong> &#8211; File descriptor. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Returns a value of 1 if the given file descriptor is a terminal. Otherwise returns a value of 0. By default test for stdout (1).</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.22.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::fnmatch__ssCR.ssCR">
+bool <tt class="descclassname">qi::os::</tt><tt class="descname">fnmatch</tt><big>(</big>const std::string&amp; <em>pattern</em>, const std::string&amp; <em>string</em><big>)</big><a class="headerlink" href="#qi::os::fnmatch__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement POSIX compliant fnmatch.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::strdup__cCP">
+char* <tt class="descclassname">qi::os::</tt><tt class="descname">strdup</tt><big>(</big>const char* <em>src</em><big>)</big><a class="headerlink" href="#qi::os::strdup__cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement POSIX compliant strdup.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::snprintf__cP.s.cCP.X">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">snprintf</tt><big>(</big>char* <em>str</em>, size_t <em>size</em>, const char* <em>format</em>, <em>...</em><big>)</big><a class="headerlink" href="#qi::os::snprintf__cP.s.cCP.X" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><ul>
+<li><div class="admonition-see-also first admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="http://en.cppreference.com/w/cpp/io/c/fprintf">http://en.cppreference.com/w/cpp/io/c/fprintf</a></p>
+</div>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::getenv__cCP">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">getenv</tt><big>(</big>const char* <em>var</em><big>)</big><a class="headerlink" href="#qi::os::getenv__cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get an environment variable. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>var</strong> &#8211; The environment variable to search for. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The value in the environment, or an empty string if there is no match.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Searches the  environment list to find the environment variable var, and</p>
+</li>
+<li><p class="first">returns a pointer to the corresponding value string.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::pathsep">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">pathsep</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::pathsep" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the path separator. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The separator of paths.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>It is the separator we can found in PATH env for example.</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::setenv__cCP.cCP">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">setenv</tt><big>(</big>const char* <em>var</em>, const char* <em>value</em><big>)</big><a class="headerlink" href="#qi::os::setenv__cCP.cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Change or add an environment variable. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>var</strong> &#8211; The variable name. </li>
+<li><strong>value</strong> &#8211; The value of the variable. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">0 on success, or -1 on error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Adds the variable name to the environment with the value in argument if name</p>
+</li>
+<li><p class="first">does not already exist. Else changes its value.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::timezone">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">timezone</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::timezone" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Return the timezone. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A string with the timezone.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.22.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::sleep__unsigned-i">
+void <tt class="descclassname">qi::os::</tt><tt class="descname">sleep</tt><big>(</big>unsigned int <em>seconds</em><big>)</big><a class="headerlink" href="#qi::os::sleep__unsigned-i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Sleep for the specified number of seconds. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>seconds</strong> &#8211; Number of seconds to sleep.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Under Linux/OS X it will not be disturbed by eventual signals. Makes the</p>
+</li>
+<li><p class="first">calling thread sleep until seconds have elapsed or a signal arrives which</p>
+</li>
+<li><p class="first">is not ignored.</p>
+</li>
+<li></li>
+<li></li>
+<li><p class="first">Explain the behavior of signals on windows when sleeping.</p>
+</li>
+<li></li>
+<li><div class="admonition-see-also first admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#qi::os::msleep__unsigned-i"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::msleep(unsigned</span> <span class="pre">int)</span></tt></a></p>
+</div>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::msleep__unsigned-i">
+void <tt class="descclassname">qi::os::</tt><tt class="descname">msleep</tt><big>(</big>unsigned int <em>milliseconds</em><big>)</big><a class="headerlink" href="#qi::os::msleep__unsigned-i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Sleep for the specified number of milliseconds. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>milliseconds</strong> &#8211; Number of milliseconds to sleep.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Under Linux/OSX it will not be disturbed by eventual signals sent to process.</p>
+</li>
+<li><p class="first">Makes the calling thread sleep until millliseconds have elapsed or a signal</p>
+</li>
+<li><p class="first">which is not ignored arrives.</p>
+</li>
+<li></li>
+<li><div class="admonition-see-also first admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#qi::os::sleep__unsigned-i"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::sleep(unsigned</span> <span class="pre">int)</span></tt></a></p>
+</div>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::gettimeofday__qi::os::timevalP">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">gettimeofday</tt><big>(</big>qi::os::timeval* <em>tp</em><big>)</big><a class="headerlink" href="#qi::os::gettimeofday__qi::os::timevalP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>The gettimeofday() function shall obtain the current time. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tp</strong> &#8211; The timeval structure used to return the current time. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">0 on success</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>The gettimeofday() function shall obtain the current time, expressed as seconds and microseconds since the Epoch, and store it in the timeval structure pointed to by tp. The resolution of the system clock is unspecified. This clock is subject to NTP adjustments.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::ustime">
+<a class="reference external" href="types.html#TPD_qi::int64_t">qi::int64_t</a> <tt class="descclassname">qi::os::</tt><tt class="descname">ustime</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::ustime" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Elapsed time since program started in microseconds. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return qi::int64_t in microseconds. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::cputime">
+std::pair&lt;int64_t, int64_t&gt; <tt class="descclassname">qi::os::</tt><tt class="descname">cputime</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::cputime" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Return CPU time used by the calling thread as a pair (userTime, systemTime) in microseconds. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return pair(userTime, systemTime) in microseconds.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::add-operator__qi::os::timevalCR.qi::os::timevalCR">
+qi::os::timeval <tt class="descclassname">qi::os::</tt><tt class="descname">operator+</tt><big>(</big>const qi::os::timeval&amp; <em>lhs</em>, const qi::os::timeval&amp; <em>rhs</em><big>)</big><a class="headerlink" href="#qi::os::add-operator__qi::os::timevalCR.qi::os::timevalCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Add two timeval together. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lhs</strong> &#8211; First timeval </li>
+<li><strong>rhs</strong> &#8211; Second timeval </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::add-operator__qi::os::timevalCR.l">
+qi::os::timeval <tt class="descclassname">qi::os::</tt><tt class="descname">operator+</tt><big>(</big>const qi::os::timeval&amp; <em>lhs</em>, long <em>us</em><big>)</big><a class="headerlink" href="#qi::os::add-operator__qi::os::timevalCR.l" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Add a delay to a timeval (in microsecond) </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lhs</strong> &#8211; Frist timeval </li>
+<li><strong>us</strong> &#8211; Second timeval </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::sub-operator__qi::os::timevalCR.qi::os::timevalCR">
+qi::os::timeval <tt class="descclassname">qi::os::</tt><tt class="descname">operator-</tt><big>(</big>const qi::os::timeval&amp; <em>lhs</em>, const qi::os::timeval&amp; <em>rhs</em><big>)</big><a class="headerlink" href="#qi::os::sub-operator__qi::os::timevalCR.qi::os::timevalCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Substract two timeval together. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lhs</strong> &#8211; First timeval </li>
+<li><strong>rhs</strong> &#8211; Second timeval </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::sub-operator__qi::os::timevalCR.l">
+qi::os::timeval <tt class="descclassname">qi::os::</tt><tt class="descname">operator-</tt><big>(</big>const qi::os::timeval&amp; <em>lhs</em>, long <em>us</em><big>)</big><a class="headerlink" href="#qi::os::sub-operator__qi::os::timevalCR.l" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Substract a delay to a timeval (in microsecond) </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>lhs</strong> &#8211; Frist timeval </li>
+<li><strong>us</strong> &#8211; Second timeval </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::dlopen__cCP.i">
+void* <tt class="descclassname">qi::os::</tt><tt class="descname">dlopen</tt><big>(</big>const char* <em>filename</em>, int <em>flag</em> = -1<big>)</big><a class="headerlink" href="#qi::os::dlopen__cCP.i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Load a dynamic library. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>filename</strong> &#8211; Name of the dynamic library. </li>
+<li><strong>flag</strong> &#8211; Flags used to load the dynamic library. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A handle to the library, or 0 on error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Loads the dynamic library file named by the null-terminated string filename</p>
+</li>
+<li><p class="first">and returns an opaque &#8220;handle&#8221; for the dynamic library. If filename is NULL,</p>
+</li>
+<li><p class="first">then the returned handle is for the main program.</p>
+</li>
+<li></li>
+<li><p class="first">No flag is supported on windows platform. Otherwise, see <tt class="docutils literal"><span class="pre">man</span> <span class="pre">0p</span> <span class="pre">dlfcn.h</span></tt></p>
+</li>
+<li><p class="first">for more information on flags available. If not given, <tt class="docutils literal"><span class="pre">RTLD_NOW</span></tt> is used.</p>
+</li>
+<li></li>
+<li><div class="admonition-see-also first admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#qi::os::dlerror"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlerror()</span></tt></a> for more details on the error.</p>
+</div>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::dlclose__voidP">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">dlclose</tt><big>(</big>void* <em>handle</em><big>)</big><a class="headerlink" href="#qi::os::dlclose__voidP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Decrements the reference count on the dynamic library. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>handle</strong> &#8211; The dynamic library handle. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">This function returns 0 on success, and non-zero on error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Decrements the reference count on the dynamic library handle. If the</p>
+</li>
+<li><p class="first">reference count drops to zero and no other loaded library uses symbols in</p>
+</li>
+<li><p class="first">it, then the dynamic library is unloaded.</p>
+</li>
+<li></li>
+<li><p class="first">If there is an error you can look which one with dlerror function provided in</p>
+</li>
+<li><p class="first">this same module.</p>
+</li>
+<li></li>
+<li><div class="admonition-see-also first admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#qi::os::dlerror"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlerror()</span></tt></a> for more details on the error.</p>
+</div>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::dlsym__voidP.cCP">
+void* <tt class="descclassname">qi::os::</tt><tt class="descname">dlsym</tt><big>(</big>void* <em>handle</em>, const char* <em>symbol</em><big>)</big><a class="headerlink" href="#qi::os::dlsym__voidP.cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the address where the symbol is loaded into memory. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>handle</strong> &#8211; Handle on a dynamic library returned by dlopen(). </li>
+<li><strong>symbol</strong> &#8211; The null-terminated symbol name. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The address of the symbol, or 0 on error.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">If the symbol is not found in the specified library or any of the libraries</p>
+</li>
+<li><p class="first">that were automatically loaded by <tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlopen()</span></tt> when that</p>
+</li>
+<li><p class="first">library was loaded, <tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlsym()</span></tt> returns 0.</p>
+</li>
+<li></li>
+<li><div class="admonition-see-also first admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last"><a class="reference external" href="#qi::os::dlerror"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlerror()</span></tt></a> for more details on the error.</p>
+</div>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::dlerror">
+const char* <tt class="descclassname">qi::os::</tt><tt class="descname">dlerror</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::dlerror" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Returns a human readable string of the error code. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">NULL if no error has occurred since it was last called. An human readable string otherwise.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>On windows, return value may be modified by another function unrelated to qi::os::dlopen familly. This function does not ensure that error value is 0 at initialisation. You may reset error value before a call to any qi::os::dl{open, sym, close} functions with a first call to this function.</p>
+<ul class="last">
+<li><p class="first">Returns a human readable string describing the most recent error that</p>
+</li>
+<li><p class="first">occurred from <a class="reference external" href="#qi::os::dlopen__cCP.i"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlopen(const</span> <span class="pre">char*,</span> <span class="pre">int)</span></tt></a>,</p>
+</li>
+<li><p class="first"><a class="reference external" href="#qi::os::dlsym__voidP.cCP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlsym(void*,</span> <span class="pre">const</span> <span class="pre">char*)</span></tt></a> or</p>
+</li>
+<li><p class="first"><a class="reference external" href="#qi::os::dlclose__voidP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlclose(void*)</span></tt></a> since the last call to</p>
+</li>
+<li><p class="first"><a class="reference external" href="#qi::os::dlerror"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::os::dlerror()</span></tt></a>.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::spawnvp__cPCA">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">spawnvp</tt><big>(</big>char* const <em>argv</em>[]<big>)</big><a class="headerlink" href="#qi::os::spawnvp__cPCA" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Create and execute a new process. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>argv</strong> &#8211; The command line arguments of the new process as an array (NULL terminated). </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">-1 on error, child pid otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Creates and executes a new process.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::spawnlp__cCP.X">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">spawnlp</tt><big>(</big>const char* <em>argv</em>, <em>...</em><big>)</big><a class="headerlink" href="#qi::os::spawnlp__cCP.X" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Create and execute a new process. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>argv</strong> &#8211; Path to the file to be executed. </li>
+<li><strong>...</strong> &#8211; The command line arguments of the new process as var args. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">-1 on error, child pid otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Creates and executes a new process.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::system__cCP">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">system</tt><big>(</big>const char* <em>command</em><big>)</big><a class="headerlink" href="#qi::os::system__cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Execute a shell command. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>command</strong> &#8211; Command to execute. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The value returned is -1 on error, and the return status of the command otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Executes a command by calling <tt class="docutils literal"><span class="pre">/bin/sh</span> <span class="pre">-c</span> <span class="pre">command</span></tt>, and returns when the</p>
+</li>
+<li><p class="first">command has completed.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::getpid">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">getpid</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::getpid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the process identifier.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::gettid">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">gettid</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::gettid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the thread identifier.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::waitpid__i.iP">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">waitpid</tt><big>(</big>int <em>pid</em>, int* <em>status</em><big>)</big><a class="headerlink" href="#qi::os::waitpid__i.iP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Wait for process to change state. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pid</strong> &#8211; Pid to wait. </li>
+<li><strong>status</strong> &#8211; Status returned by the process. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">See detailed description.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">Suspends execution of the calling process until a child specified by pid</p>
+</li>
+<li><p class="first">argument changes of state.</p>
+</li>
+<li></li>
+<li><p class="first">Return values (rc):</p>
+</li>
+<li></li>
+<li><ul class="first simple">
+<li>rc = 0 means that everything went well.</li>
+</ul>
+</li>
+<li><ul class="first simple">
+<li>rc &gt; 0 means that an error occurred. (For instance, no process</li>
+</ul>
+</li>
+<li><p class="first">corresponding to the pid was found). The exact value is an errno code.</p>
+</li>
+<li><ul class="first simple">
+<li>rc &lt; 0 means that the child was killed by a signal. The value of the signal</li>
+</ul>
+</li>
+<li><p class="first">is -rc.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.12.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::kill__i.i">
+int <tt class="descclassname">qi::os::</tt><tt class="descname">kill</tt><big>(</big>int <em>pid</em>, int <em>sig</em><big>)</big><a class="headerlink" href="#qi::os::kill__i.i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Send a signal to a process. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pid</strong> &#8211; PID to kill. </li>
+<li><strong>sig</strong> &#8211; Signal to deliver to the process. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">See detailed description.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">The kill() function shall send a signal to a process or a group of processes</p>
+</li>
+<li><p class="first">specified by pid.</p>
+</li>
+<li></li>
+<li><p class="first">Return value (rc):</p>
+</li>
+<li></li>
+<li><ul class="first simple">
+<li>rc = 0 means that everything went well.</li>
+</ul>
+</li>
+<li><ul class="first simple">
+<li>rc != 0 means that an error occurred. (For instance, no process</li>
+</ul>
+</li>
+<li><p class="first">corresponding to the pid was found).</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.14.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::findAvailablePort__unsigned-short-i">
+unsigned short int <tt class="descclassname">qi::os::</tt><tt class="descname">findAvailablePort</tt><big>(</big>unsigned short int <em>port</em><big>)</big><a class="headerlink" href="#qi::os::findAvailablePort__unsigned-short-i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Find the first available port starting at port number in parameter. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>port</strong> &#8211; First port tested, then each port following it is tested one by one until one available is found. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Available port or 0 on error</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li></li>
+<li></li>
+<li><p class="first">This function is not thread safe and suffers from a race condition. You</p>
+</li>
+<li><p class="first">should avoid calling it and call listen on port 0 instead. This will pick</p>
+</li>
+<li><p class="first">a random port with no race condition.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.14.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::hostIPAddrs__b">
+std::map&lt;std::string, std::vector&lt;std::string&gt;&gt; <tt class="descclassname">qi::os::</tt><tt class="descname">hostIPAddrs</tt><big>(</big>bool <em>ipv6Addr</em> = false<big>)</big><a class="headerlink" href="#qi::os::hostIPAddrs__b" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Find all network adapters and corresponding IPs. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ipv6Addr</strong> &#8211; Look for IPv6 addresses instead of IPv4 ones. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A map of interfaces associated with the list of IPs of that interface.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.14.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::setCurrentThreadName__ssCR">
+void <tt class="descclassname">qi::os::</tt><tt class="descname">setCurrentThreadName</tt><big>(</big>const std::string&amp; <em>name</em><big>)</big><a class="headerlink" href="#qi::os::setCurrentThreadName__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Set the current thread name to the string in parameter. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; The new name of the current thread.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Prefer using ScopedThreadName that will restore the thread name on exit.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::currentThreadName">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">currentThreadName</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::currentThreadName" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>returns the current thread name as a std::string </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a std::string of at most 16 characters </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::setCurrentThreadCPUAffinity__std::vector:i:CR">
+bool <tt class="descclassname">qi::os::</tt><tt class="descname">setCurrentThreadCPUAffinity</tt><big>(</big>const std::vector&lt;int&gt;&amp; <em>cpus</em><big>)</big><a class="headerlink" href="#qi::os::setCurrentThreadCPUAffinity__std::vector:i:CR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Set the CPU affinity for the current thread. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>cpus</strong> &#8211; a vector of CPU core ids </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">true on success </p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">When CPU Affinity is set, the current thread will only be allowed</p>
+</li>
+<li><p class="first">to run on the given set of cores.</p>
+</li>
+<li></li>
+<li><p class="first versionadded">
+<span class="versionmodified">New in version 1.22.</span></p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::numberOfCPUs">
+long <tt class="descclassname">qi::os::</tt><tt class="descname">numberOfCPUs</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::numberOfCPUs" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the number of CPUs on the local machin. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Number of CPUs </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::getMachineId">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">getMachineId</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::getMachineId" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Returns an unique uuid for the machine. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The uuid of the machine.</td>
+</tr>
+</tbody>
+</table>
+<p>The UUID is stored on disk and will stay unchanged as long as it is not removed. All programs running on the same machine will have the same UUID returned. An empty string is returned on failure.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::generateUuid">
+std::string <tt class="descclassname">qi::os::</tt><tt class="descname">generateUuid</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::os::generateUuid" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Generate a universally unique identifier. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The uuid. .. versionadded:: 1.20 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::os::memoryUsage__unsigned-i">
+size_t <tt class="descclassname">qi::os::</tt><tt class="descname">memoryUsage</tt><big>(</big>unsigned int <em>pid</em><big>)</big><a class="headerlink" href="#qi::os::memoryUsage__unsigned-i" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the memory usage of a process in kB. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pid</strong> &#8211; PID of a process </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Returns a value &gt; 0 corresponding to the memory in RAM used by the process in kB. Otherwise returns a value of 0, meaning that it was impossible to get the memory usage. </p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="objecttypebuilder.html" title="qi::ObjectTypeBuilder">qi::ObjectTypeBuilder</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">C++ qi API Reference</a>
+   |
+    <a href="path.html" title="qi::path namespace">qi::path namespace</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API References</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ qi API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actor.html">qi::Actor and qi::Strand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">qi::Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applicationsession.html">qi::ApplicationSession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyvalue.html">qi::AnyValue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyfunction.html">qi::AnyFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyobject.html">qi::Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anymodule.html">qi::AnyModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic.html">qi::Atomic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer.html">qi::Buffer, qi::BufferReader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binarycodec.html">Binary Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock.html">qi::Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamicobjectbuilder.html">qi::DynamicObjectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventloop.html">qi::EventLoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="future.html">qi::Promise, qi::Future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocolor.html">qi::IOColor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsoncodec.html">JSON Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">qi::log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macro.html">qi helper macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">qi::MetaObject, qi::MetaMethod, qi::MetaSignal, qi::MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objecttypebuilder.html">qi::ObjectTypeBuilder</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">qi::os</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="path.html">qi::path namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="periodictask.html">qi::PeriodicTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preproc.html">qi preprocessor macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">qi::Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session.html">qi::Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">qi::Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signature.html">qi::Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">qi::stats namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trackable.html">qi::Trackable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">qi::Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">qi::Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">qi::Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-classindex.html">C++ Class Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-funcindex.html">C++ Function Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python qi API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">qi::os</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#qi-os-namespace-reference">qi::os Namespace Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#inner-definitions">Inner Definitions</a><ul>
+<li><a class="reference internal" href="#classes">Classes</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="objecttypebuilder.html" title="qi::ObjectTypeBuilder">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="path.html" title="qi::path namespace">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

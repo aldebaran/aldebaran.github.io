@@ -1,0 +1,1070 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qi::path namespace &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../../index.html" />
+    <link rel="up" title="C++ qi API Reference" href="index.html" />
+    <link rel="next" title="qi::PeriodicTask" href="periodictask.html" />
+    <link rel="prev" title="qi::os" href="os.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>
+         |
+        <a title="Site map" href="../../contents.html">Site map</a>
+         |
+        <a title="Search" href="../../search.html">Search</a>
+         |
+        <a title="Index" href="../../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="os.html" title="qi::os">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="periodictask.html" title="qi::PeriodicTask">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="api-cpp-path">
+            
+  <div class="section" id="qi-path-namespace">
+<h1>qi::path namespace<a class="headerlink" href="#qi-path-namespace" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="#qi::path"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::path</span></tt></a> is a set of functions to find binaries, libraries, data and
+configuration files on the system.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<strong><p class="rubric">Global Namespaces</p>
+</strong><ul>
+<li><p class="first">namespace qi::path</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (namespace qi::path)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::path::sdkPrefix">qi::path::sdkPrefix</a><p><a class="reference internal" href="#qi::path::findConf__ssCR.ssCR">qi::path::findConf</a></p>
+<p><a class="reference internal" href="#qi::path::userWritableDataPath__ssCR.ssCR">qi::path::userWritableDataPath</a></p>
+<p><a class="reference internal" href="#qi::path::dataPaths__ssCR">qi::path::dataPaths</a></p>
+<p><a class="reference internal" href="#qi::path::setWritablePath__ssCR">qi::path::setWritablePath</a></p>
+<p><a class="reference internal" href="#qi::path::libPaths">qi::path::libPaths</a></p>
+<p><a class="reference internal" href="#qi::path::confPaths__ssCR">qi::path::confPaths</a></p>
+<p><a class="reference internal" href="#qi::path::listData__ssCR.ssCR">qi::path::listData</a></p>
+<p><a class="reference internal" href="#qi::path::findBin__ssCR.b">qi::path::findBin</a></p>
+<p><a class="reference internal" href="#qi::path::convertToDosPath__ssCR">qi::path::convertToDosPath</a></p>
+<p><a class="reference internal" href="#qi::path::findLib__ssCR">qi::path::findLib</a></p>
+<p><a class="reference internal" href="#qi::path::userWritableConfPath__ssCR.ssCR">qi::path::userWritableConfPath</a></p>
+<p><a class="reference internal" href="#qi::path::binPaths">qi::path::binPaths</a></p>
+<p><a class="reference internal" href="#qi::path::listLib__ssCR.ssCR">qi::path::listLib</a></p>
+<p><a class="reference internal" href="#qi::path::findData__ssCR.ssCR">qi::path::findData</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+<strong><p class="rubric">Global Classes</p>
+</strong><ul>
+<li><p class="first">class qi::Path</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (class qi::Path)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::Path::assign-operator__qi::PathCRC">qi::Path::operator=</a><p><a class="reference internal" href="#qi::Path::isSymlinkC">qi::Path::isSymlink</a></p>
+<p><a class="reference internal" href="#qi::Path::recursiveFilesC">qi::Path::recursiveFiles</a></p>
+<p><a class="reference internal" href="#qi::Path::div-operator__qi::PathCRC">qi::Path::operator/</a></p>
+<p><a class="reference internal" href="#qi::Path::filenameC">qi::Path::filename</a></p>
+<p><a class="reference internal" href="#qi::Path::~Path">qi::Path::~Path</a></p>
+<p><a class="reference internal" href="#qi::Path::isRegularFileC">qi::Path::isRegularFile</a></p>
+<p><a class="reference internal" href="#qi::Path::dirsC">qi::Path::dirs</a></p>
+<p><a class="reference internal" href="#qi::Path::isDirC">qi::Path::isDir</a></p>
+<p><a class="reference internal" href="#qi::Path::isEmptyC">qi::Path::isEmpty</a></p>
+<p><a class="reference internal" href="#qi::Path::strC">qi::Path::str</a></p>
+<p><a class="reference internal" href="#qi::Path::Path__ssCR">qi::Path::Path</a></p>
+<p><a class="reference internal" href="#qi::Path::div-assign-operator__qi::PathCRC">qi::Path::operator/=</a></p>
+<p><a class="reference internal" href="#qi::Path::filesC">qi::Path::files</a></p>
+<p><a class="reference internal" href="#qi::Path::parentC">qi::Path::parent</a></p>
+<p><a class="reference internal" href="#qi::Path::extensionC">qi::Path::extension</a></p>
+<p><a class="reference internal" href="#qi::Path::castto-ss-operatorC">qi::Path::operator std::string</a></p>
+<p><a class="reference internal" href="#qi::Path::absoluteC">qi::Path::absolute</a></p>
+<p><a class="reference internal" href="#qi::Path::existsC">qi::Path::exists</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+</dl>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qi-path-class-reference">
+<h3>qi::Path Class Reference<a class="headerlink" href="#qi-path-class-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p>The Path class allow handling path in a cross-platform maner.    The class assume that all string are encoded in UTF-8.  <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/path.hpp&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="public-functions">
+<h4>Public Functions<a class="headerlink" href="#public-functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function function-index">
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Path::Path__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">Path</span></tt></a></tt><big>(</big>const std::string&amp; <em>unicodePath</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Path::Path__cCP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">Path</span></tt></a></tt><big>(</big>const char* <em>unicodePath</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Path::Path__PathCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">Path</span></tt></a></tt><big>(</big>const Path&amp; <em>path</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Path::~Path"><tt class="xref cpp cpp-func docutils literal"><span class="pre">~Path</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::Path::isEmptyC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isEmpty</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::Path::existsC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">exists</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::Path::isDirC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isDir</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::Path::isRegularFileC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isRegularFile</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::Path::isSymlinkC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isSymlink</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::string</span> <tt class="descname"><a class="reference external" href="#qi::Path::filenameC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">filename</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::string</span> <tt class="descname"><a class="reference external" href="#qi::Path::extensionC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">extension</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>Path</span> <tt class="descname"><a class="reference external" href="#qi::Path::parentC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">parent</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>Path</span> <tt class="descname"><a class="reference external" href="#qi::Path::absoluteC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">absolute</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>PathVector</span> <tt class="descname"><a class="reference external" href="#qi::Path::filesC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">files</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>PathVector</span> <tt class="descname"><a class="reference external" href="#qi::Path::recursiveFilesC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">recursiveFiles</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>PathVector</span> <tt class="descname"><a class="reference external" href="#qi::Path::dirsC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">dirs</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Path::castto-ss-operatorC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">string</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::string</span> <tt class="descname"><a class="reference external" href="#qi::Path::strC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">str</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>Path</span> <tt class="descname"><a class="reference external" href="#qi::Path::div-operator__qi::PathCRC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator/</span></tt></a></tt><big>(</big>const qi::Path&amp; <em>rhs</em><big>)</big> const</dt>
+<dt>
+<span>const Path&amp;</span> <tt class="descname"><a class="reference external" href="#qi::Path::div-assign-operator__qi::PathCRC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator/=</span></tt></a></tt><big>(</big>const qi::Path&amp; <em>rhs</em><big>)</big> const</dt>
+<dt>
+<span>const Path&amp;</span> <tt class="descname"><a class="reference external" href="#qi::Path::assign-operator__qi::PathCRC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator=</span></tt></a></tt><big>(</big>const qi::Path&amp; <em>rhs</em><big>)</big> const</dt>
+</dl>
+
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p>The Path class allow handling path in a cross-platform maner.    The class assume that all string are encoded in UTF-8.</p>
+</div>
+<div class="section" id="function-documentation">
+<h4>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::Path::Path__ssCR">
+ <tt class="descclassname">qi::Path::</tt><tt class="descname">Path</tt><big>(</big>const std::string&amp; <em>unicodePath</em> = std::string(<big>)</big><a class="headerlink" href="#qi::Path::Path__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>unicodePath</strong> &#8211; Path </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Default Constructor</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::Path__cCP">
+ <tt class="descclassname">qi::Path::</tt><tt class="descname">Path</tt><big>(</big>const char* <em>unicodePath</em><big>)</big><a class="headerlink" href="#qi::Path::Path__cCP" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>unicodePath</strong> &#8211; Path </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::Path__PathCR">
+ <tt class="descclassname">qi::Path::</tt><tt class="descname">Path</tt><big>(</big>const Path&amp; <em>path</em><big>)</big><a class="headerlink" href="#qi::Path::Path__PathCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy Constructor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::~Path">
+ <tt class="descclassname">qi::Path::</tt><tt class="descname">~Path</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::Path::~Path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default destructor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::isEmptyC">
+bool <tt class="descclassname">qi::Path::</tt><tt class="descname">isEmpty</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::isEmptyC" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the path empty?</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::existsC">
+bool <tt class="descclassname">qi::Path::</tt><tt class="descname">exists</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::existsC" title="Permalink to this definition">¶</a></dt>
+<dd><p>does this file exist?</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::isDirC">
+bool <tt class="descclassname">qi::Path::</tt><tt class="descname">isDir</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::isDirC" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the path a directory?</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::isRegularFileC">
+bool <tt class="descclassname">qi::Path::</tt><tt class="descname">isRegularFile</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::isRegularFileC" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the path a regular file?</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::isSymlinkC">
+bool <tt class="descclassname">qi::Path::</tt><tt class="descname">isSymlink</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::isSymlinkC" title="Permalink to this definition">¶</a></dt>
+<dd><p>is the path a symlink?</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::filenameC">
+std::string <tt class="descclassname">qi::Path::</tt><tt class="descname">filename</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::filenameC" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the name of the current file of folder</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::extensionC">
+std::string <tt class="descclassname">qi::Path::</tt><tt class="descname">extension</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::extensionC" title="Permalink to this definition">¶</a></dt>
+<dd><p>get the extension of the current file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::parentC">
+Path <tt class="descclassname">qi::Path::</tt><tt class="descname">parent</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::parentC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a Path to the parent</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::absoluteC">
+Path <tt class="descclassname">qi::Path::</tt><tt class="descname">absolute</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::absoluteC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return an absolute Path of the current path</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::filesC">
+PathVector <tt class="descclassname">qi::Path::</tt><tt class="descname">files</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::filesC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a vector of files contained in the current path</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::recursiveFilesC">
+PathVector <tt class="descclassname">qi::Path::</tt><tt class="descname">recursiveFiles</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::recursiveFilesC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a vector of absolute path to files contained recursively in the current path</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::dirsC">
+PathVector <tt class="descclassname">qi::Path::</tt><tt class="descname">dirs</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::dirsC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return a vector of dirs contained in the current path</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::castto-ss-operatorC">
+ <tt class="descclassname">qi::Path::</tt><tt class="descname">operator</tt> std::string<big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::castto-ss-operatorC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the path as a string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::strC">
+std::string <tt class="descclassname">qi::Path::</tt><tt class="descname">str</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::strC" title="Permalink to this definition">¶</a></dt>
+<dd><p>return the path as a string</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::div-operator__qi::PathCRC">
+Path <tt class="descclassname">qi::Path::</tt><tt class="descname">operator/</tt><big>(</big>const qi::Path&amp; <em>rhs</em><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::div-operator__qi::PathCRC" title="Permalink to this definition">¶</a></dt>
+<dd><p>concat two paths adding a directory separator between them</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::div-assign-operator__qi::PathCRC">
+const Path&amp; <tt class="descclassname">qi::Path::</tt><tt class="descname">operator/=</tt><big>(</big>const qi::Path&amp; <em>rhs</em><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::div-assign-operator__qi::PathCRC" title="Permalink to this definition">¶</a></dt>
+<dd><p>concat two paths adding a directory separator between them</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Path::assign-operator__qi::PathCRC">
+const Path&amp; <tt class="descclassname">qi::Path::</tt><tt class="descname">operator=</tt><big>(</big>const qi::Path&amp; <em>rhs</em><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Path::assign-operator__qi::PathCRC" title="Permalink to this definition">¶</a></dt>
+<dd><p>copy operator</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="qi-path-namespace-reference">
+<h3>qi::path Namespace Reference<a class="headerlink" href="#qi-path-namespace-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p>Set of tools to handle SDK layouts.  <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+</div>
+<div class="section" id="inner-definitions">
+<h4>Inner Definitions<a class="headerlink" href="#inner-definitions" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="namespaces">
+<h5>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Brief</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><tt class="docutils literal"><span class="pre">qi::path::detail</span></tt></td>
+<td>Implementation details. </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="functions">
+<h5>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h5>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Brief</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference external" href="#qi::path::sdkPrefix"><tt class="docutils literal"><span class="pre">qi::path::sdkPrefix</span></tt></a></td>
+<td>Return the default SDK prefix path. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::findBin__ssCR.b"><tt class="docutils literal"><span class="pre">qi::path::findBin</span></tt></a></td>
+<td>Look for a binary. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::findLib__ssCR"><tt class="docutils literal"><span class="pre">qi::path::findLib</span></tt></a></td>
+<td>Look for a library. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::findConf__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::path::findConf</span></tt></a></td>
+<td>Look for a configuration file. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::findData__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::path::findData</span></tt></a></td>
+<td>Look for a file in all dataPaths(applicationName) directories, return the first match. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::listData__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::path::listData</span></tt></a></td>
+<td>List data files matching the given pattern in all dataPaths(applicationName) directories. For each match, return the occurence from the first dataPaths prefix. Directories are discarded. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::listLib__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::path::listLib</span></tt></a></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::confPaths__ssCR"><tt class="docutils literal"><span class="pre">qi::path::confPaths</span></tt></a></td>
+<td>Get the list of directories used when searching for configuration files for the given application name. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::dataPaths__ssCR"><tt class="docutils literal"><span class="pre">qi::path::dataPaths</span></tt></a></td>
+<td>Get the list of directories used when searching for data files for the given application name. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::binPaths"><tt class="docutils literal"><span class="pre">qi::path::binPaths</span></tt></a></td>
+<td>Get the list of directories used when searching for binaries. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::libPaths"><tt class="docutils literal"><span class="pre">qi::path::libPaths</span></tt></a></td>
+<td>Get the list of directories used when searching for libraries. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::userWritableDataPath__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::path::userWritableDataPath</span></tt></a></td>
+<td>Get the writable data files path for users. </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::userWritableConfPath__ssCR.ssCR"><tt class="docutils literal"><span class="pre">qi::path::userWritableConfPath</span></tt></a></td>
+<td>Get the writable configuration files path for users. </td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="#qi::path::convertToDosPath__ssCR"><tt class="docutils literal"><span class="pre">qi::path::convertToDosPath</span></tt></a></td>
+<td>Convert given path into DOS 8.3 path if it exists, else returns empty string (Windows only). </td>
+</tr>
+<tr class="row-even"><td><a class="reference external" href="#qi::path::setWritablePath__ssCR"><tt class="docutils literal"><span class="pre">qi::path::setWritablePath</span></tt></a></td>
+<td>Set the writable files path for users. </td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p>Set of tools to handle SDK layouts.</p>
+</div>
+<div class="section" id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::path::sdkPrefix">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">sdkPrefix</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::path::sdkPrefix" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Return the default SDK prefix path. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The SDK prefix path. It&#8217;s always a complete, native path. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::findBin__ssCR.b">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">findBin</tt><big>(</big>const std::string&amp; <em>name</em>, bool <em>searchInPath</em> = false<big>)</big><a class="headerlink" href="#qi::path::findBin__ssCR.b" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Look for a binary. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; The full name of the binary, or just the name. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The complete, native path to the file found, an empty string otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>This will search in all SDK prefixes for a file named &#8216;name&#8217;.</li>
+<li>It will then add &#8216;.exe&#8217; suffix if needed.</li>
+<li>(without &#8216;.exe&#8217;) (in UTF-8).</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::findLib__ssCR">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">findLib</tt><big>(</big>const std::string&amp; <em>name</em><big>)</big><a class="headerlink" href="#qi::path::findLib__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Look for a library. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>name</strong> &#8211; The full name of the library, or just the name. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The complete, native path to the file found, an empty string otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>This will search in all SDK prefixes for a file named &#8216;name&#8217;.</li>
+<li>It will then add &#8216;lib&#8217; prefix, and appropriated suffixes</li>
+<li>(&#8216;.dll&#8217; on windows, &#8216;.so&#8217; on linux, &#8216;.dylib&#8217; on mac).</li>
+<li>(without &#8216;.dll&#8217;, &#8216;.so&#8217;) (in UTF-8).</li>
+<li></li>
+<li>You can specify subdirectories using &#8220;/&#8221; as directory separator</li>
+<li>(in UTF-8).</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::findConf__ssCR.ssCR">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">findConf</tt><big>(</big>const std::string&amp; <em>applicationName</em>, const std::string&amp; <em>filename</em><big>)</big><a class="headerlink" href="#qi::path::findConf__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Look for a configuration file. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; Name of the application. </li>
+<li><strong>filename</strong> &#8211; Name of the file to look for. You can specify subdirectories using &#8220;/&#8221; as directory separator. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The complete, native path of the file if it was found, an empty string otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>The file is searched in a list of possible directories,</li>
+<li>the first match is returned.</li>
+<li></li>
+<li>The list of paths is constructed like this:</li>
+<li></li>
+<li><ul class="first">
+<li>first, a standard path in the home directory (like</li>
+</ul>
+</li>
+<li>~/.config/&lt;applicationName&gt;/&lt;filename&gt;)</li>
+<li><ul class="first">
+<li>then: &lt;sdk_prefix&gt;/etc/&lt;applicationName&gt;/&lt;filename&gt; for each known SDK</li>
+</ul>
+</li>
+<li>prefix.</li>
+<li><ul class="first">
+<li>then a standard path in the system. (like</li>
+</ul>
+</li>
+<li>/etc/&lt;applicationName&gt;/&lt;filename&gt;)</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::findData__ssCR.ssCR">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">findData</tt><big>(</big>const std::string&amp; <em>applicationName</em>, const std::string&amp; <em>filename</em><big>)</big><a class="headerlink" href="#qi::path::findData__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Look for a file in all dataPaths(applicationName) directories, return the first match. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; Name of the application. </li>
+<li><strong>filename</strong> &#8211; Name of the file to look for. You can specify subdirectories using &#8220;/&#8221; as directory separator. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The complete, native path of the file if it was found, an empty string otherwise.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>The file is searched in a list of possible directories, provided by the</li>
+<li><a class="reference external" href="#qi::path::dataPaths__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::dataPaths(const</span> <span class="pre">std::string&amp;)</span></tt></a>.</li>
+<li>The first match is returned.</li>
+<li></li>
+<li>For instance if you have the following files on a unix system</li>
+<li></li>
+<li><ul class="first">
+<li>~/.local/share/foo/models/nao.xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>/usr/share/foo/models/nao.xml</li>
+</ul>
+</li>
+<li></li>
+<li>then listData(&#8220;foo&#8221;, &#8220;models/nao.xml&#8221;) will return</li>
+<li></li>
+<li><ul class="first">
+<li>~/.local/share/foo/models/nao.xml</li>
+</ul>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::listData__ssCR.ssCR">
+std::vector&lt;std::string&gt; <tt class="descclassname">qi::path::</tt><tt class="descname">listData</tt><big>(</big>const std::string&amp; <em>applicationName</em>, const std::string&amp; <em>pattern</em> = &quot;*&quot;<big>)</big><a class="headerlink" href="#qi::path::listData__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>List data files matching the given pattern in all dataPaths(applicationName) directories. For each match, return the occurence from the first dataPaths prefix. Directories are discarded. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; Name of the application. </li>
+<li><strong>pattern</strong> &#8211; wilcard pattern of the files to look for. You can specify subdirectories using &#8220;/&#8221; as directory separator. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">An std::vector of the complete, native paths of the files that matched.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>Matches are searched in a list of possible directories, provided by the</li>
+<li><a class="reference external" href="#qi::path::dataPaths__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::dataPaths(const</span> <span class="pre">std::string&amp;)</span></tt></a>.</li>
+<li>When several matches collide, the first one is</li>
+<li>returned.</li>
+<li></li>
+<li>For instance if you have the following files on a unix system</li>
+<li></li>
+<li><ul class="first">
+<li>~/.local/share/foo/models/mynao.xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>~/.local/share/foo/models/myromeo_with_laser_head.xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>/usr/share/foo/models/mynao.xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>/usr/share/foo/models/myromeo.xml</li>
+</ul>
+</li>
+<li></li>
+<li>then listData(&#8220;foo&#8221;, &#8220;models/my*.xml&#8221;) will return</li>
+<li></li>
+<li><ul class="first">
+<li>~/.local/share/foo/models/mynao.xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>~/.local/share/foo/models/myromeo_with_laser_head.xml</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>/usr/share/foo/models/myromeo.xml</li>
+</ul>
+</li>
+<li></li>
+<li>note that /usr/share/foo/models/mynao.xml is not returned because a nao.xml file is already matched.</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::listLib__ssCR.ssCR">
+std::vector&lt;std::string&gt; <tt class="descclassname">qi::path::</tt><tt class="descname">listLib</tt><big>(</big>const std::string&amp; <em>subfolder</em>, const std::string&amp; <em>pattern</em> = &quot;*&quot;<big>)</big><a class="headerlink" href="#qi::path::listLib__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>same as listData but for libraries</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::confPaths__ssCR">
+std::vector&lt;std::string&gt; <tt class="descclassname">qi::path::</tt><tt class="descname">confPaths</tt><big>(</big>const std::string&amp; <em>applicationName</em> = &quot;&quot;<big>)</big><a class="headerlink" href="#qi::path::confPaths__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the list of directories used when searching for configuration files for the given application name. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; Name of the application. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">List of configuration directories.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">This is used by the <a class="reference external" href="#qi::path::findConf__ssCR.ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::findConf(const</span> <span class="pre">std::string&amp;,</span> <span class="pre">const</span> <span class="pre">std::string&amp;)</span></tt></a>.</p>
+</li>
+<li></li>
+<li><div class="first admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You should not assume those directories exist, nor</p>
+</div>
+</li>
+<li><p class="first">that they are writeable.</p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::dataPaths__ssCR">
+std::vector&lt;std::string&gt; <tt class="descclassname">qi::path::</tt><tt class="descname">dataPaths</tt><big>(</big>const std::string&amp; <em>applicationName</em> = &quot;&quot;<big>)</big><a class="headerlink" href="#qi::path::dataPaths__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the list of directories used when searching for data files for the given application name. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; Name of the application. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A list of directories.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">This is used by the <a class="reference external" href="#qi::path::findData__ssCR.ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::findData(const</span> <span class="pre">std::string&amp;,</span> <span class="pre">const</span> <span class="pre">std::string&amp;)</span></tt></a></p>
+</li>
+<li><p class="first">and the <a class="reference external" href="#qi::path::listData__ssCR.ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::listData(const</span> <span class="pre">std::string&amp;,</span> <span class="pre">const</span> <span class="pre">std::string&amp;)</span></tt></a>.</p>
+</li>
+<li></li>
+<li><p class="first">The list of paths is constructed like this:</p>
+</li>
+<li></li>
+<li><ul class="first simple">
+<li>first, a standard path in the home directory (like</li>
+</ul>
+</li>
+<li><p class="first">~/.local/share/&lt;applicationName&gt;/&lt;filename&gt;)</p>
+</li>
+<li><ul class="first simple">
+<li>then &lt;sdk_prefix&gt;/share/&lt;applicationName&gt;/&lt;filename&gt; for each known SDK</li>
+</ul>
+</li>
+<li><p class="first">prefix.</p>
+</li>
+<li></li>
+<li><div class="first admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You should not assume those directories exist,</p>
+</div>
+</li>
+<li><p class="first">nor that they are writeable.</p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::binPaths">
+std::vector&lt;std::string&gt; <tt class="descclassname">qi::path::</tt><tt class="descname">binPaths</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::path::binPaths" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the list of directories used when searching for binaries. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of directories.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">This is used by the <tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::findBin(const</span> <span class="pre">std::string&amp;)</span></tt>.</p>
+</li>
+<li></li>
+<li><div class="first admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You should not assume those directories exist, nor that they are</p>
+</div>
+</li>
+<li><p class="first">writeable.</p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::libPaths">
+std::vector&lt;std::string&gt; <tt class="descclassname">qi::path::</tt><tt class="descname">libPaths</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::path::libPaths" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the list of directories used when searching for libraries. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A list of directories.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul>
+<li><p class="first">This is used by the <a class="reference external" href="#qi::path::findLib__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">qi::path::findLib(const</span> <span class="pre">std::string&amp;)</span></tt></a>.</p>
+</li>
+<li></li>
+<li><div class="first admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You should not assume those directories exist, nor that they are</p>
+</div>
+</li>
+<li><p class="first">writeable.</p>
+</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::userWritableDataPath__ssCR.ssCR">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">userWritableDataPath</tt><big>(</big>const std::string&amp; <em>applicationName</em>, const std::string&amp; <em>filename</em><big>)</big><a class="headerlink" href="#qi::path::userWritableDataPath__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the writable data files path for users. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; The name of the application. </li>
+<li><strong>filename</strong> &#8211; The filename. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The directory or the file.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>If filename is empty, return the directory in which to write.</li>
+<li>Otherwise the path is constructed like this:</li>
+<li></li>
+<li>Linux</li>
+<li>&lt;home&gt;/.local/share/&lt;applicationName&gt;/&lt;filename&gt;</li>
+<li></li>
+<li>Windows</li>
+<li>%AppData%&lt;applicatioName&gt;&lt;filename&gt;</li>
+<li></li>
+<li>You can specify subdirectories using &#8220;/&#8221; as directory separator.</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::userWritableConfPath__ssCR.ssCR">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">userWritableConfPath</tt><big>(</big>const std::string&amp; <em>applicationName</em>, const std::string&amp; <em>filename</em> = &quot;&quot;<big>)</big><a class="headerlink" href="#qi::path::userWritableConfPath__ssCR.ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get the writable configuration files path for users. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>applicationName</strong> &#8211; The name of the application. </li>
+<li><strong>filename</strong> &#8211; The filename. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">The directory or the file.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><ul class="simple">
+<li>If filename is empty, return the directory</li>
+<li>in which to write. Otherwise the path is constructed like this:</li>
+<li></li>
+<li>Linux</li>
+<li>&lt;home&gt;/.config/&lt;applicatioName&gt;/&lt;filename&gt;</li>
+<li></li>
+<li>Windows</li>
+<li>%AppData%&lt;applicatioName&gt;&lt;filename&gt;</li>
+<li></li>
+<li>You can specify subdirectories using &#8220;/&#8221; as directory separator.</li>
+<li></li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::convertToDosPath__ssCR">
+std::string <tt class="descclassname">qi::path::</tt><tt class="descname">convertToDosPath</tt><big>(</big>const std::string&amp; <em>pathString</em><big>)</big><a class="headerlink" href="#qi::path::convertToDosPath__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>To use some API that doesn&#8217;t support unicode on Windows, it is possible to convert a unicode path to an existing file into a DOS path without any accentuated characters. (for ex. &#8220;C:test àé&#8221; becomes &#8220;C:TEST~1&#8221; if it already exists)</p>
+<p>On other platforms, simply return pathString.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::path::setWritablePath__ssCR">
+void <tt class="descclassname">qi::path::</tt><tt class="descname">setWritablePath</tt><big>(</big>const std::string&amp; <em>path</em><big>)</big><a class="headerlink" href="#qi::path::setWritablePath__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Set the writable files path for users. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>path</strong> &#8211; Path to the new writable data path </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Deprecatedsince 2.2 Use qi::log::detail::setWritablePath instead</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="os.html" title="qi::os">qi::os</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">C++ qi API Reference</a>
+   |
+    <a href="periodictask.html" title="qi::PeriodicTask">qi::PeriodicTask</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API References</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ qi API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actor.html">qi::Actor and qi::Strand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">qi::Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applicationsession.html">qi::ApplicationSession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyvalue.html">qi::AnyValue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyfunction.html">qi::AnyFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyobject.html">qi::Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anymodule.html">qi::AnyModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic.html">qi::Atomic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer.html">qi::Buffer, qi::BufferReader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binarycodec.html">Binary Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock.html">qi::Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamicobjectbuilder.html">qi::DynamicObjectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventloop.html">qi::EventLoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="future.html">qi::Promise, qi::Future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocolor.html">qi::IOColor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsoncodec.html">JSON Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">qi::log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macro.html">qi helper macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">qi::MetaObject, qi::MetaMethod, qi::MetaSignal, qi::MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objecttypebuilder.html">qi::ObjectTypeBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="os.html">qi::os</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">qi::path namespace</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="periodictask.html">qi::PeriodicTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preproc.html">qi preprocessor macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">qi::Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session.html">qi::Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">qi::Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signature.html">qi::Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">qi::stats namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trackable.html">qi::Trackable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">qi::Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">qi::Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">qi::Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-classindex.html">C++ Class Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-funcindex.html">C++ Function Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python qi API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">qi::path namespace</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#qi-path-class-reference">qi::Path Class Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#public-functions">Public Functions</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qi-path-namespace-reference">qi::path Namespace Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#inner-definitions">Inner Definitions</a><ul>
+<li><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="os.html" title="qi::os">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="periodictask.html" title="qi::PeriodicTask">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>How to switch from NAOqi1 to NAOqi2 &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../index.html" />
+    <link rel="up" title="User Guides" href="index.html" />
+    <link rel="next" title="How to receive and send logs in Python" href="py-log-client.html" />
+    <link rel="prev" title="How to write a qimessaging service in Python" href="py-service.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../index.html">Home</a>
+         |
+        <a title="Site map" href="../contents.html">Site map</a>
+         |
+        <a title="Search" href="../search.html">Search</a>
+         |
+        <a title="Index" href="../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="py-service.html" title="How to write a qimessaging service in Python">previous</a>
+     |
+    <a href="index.html" title="User Guides" accesskey="U">up</a>
+   |
+    <a href="py-log-client.html" title="How to receive and send logs in Python">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="guide-py-tonaoqi2">
+            
+  <div class="section" id="how-to-switch-from-naoqi1-to-naoqi2">
+<span id="guide-py-tonaoqi2"></span><h1>How to switch from NAOqi1 to NAOqi2<a class="headerlink" href="#how-to-switch-from-naoqi1-to-naoqi2" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This guide will help you switch to NAOqi2.
+It describes how to access the NAOqi2 world from NAOqi1 and how to take advantage of NAOqi2.</p>
+</div>
+<div class="section" id="naoqi2-main-features">
+<h2>NAOqi2 main features<a class="headerlink" href="#naoqi2-main-features" title="Permalink to this headline">¶</a></h2>
+<p>The main new features of NAOqi2 are:</p>
+<ul class="simple">
+<li>support for map, list, object and structure</li>
+<li>support for signal and property</li>
+<li>it&#8217;s no longer needed to be a module to subscribe to an event</li>
+<li>asynchronous call with result value</li>
+</ul>
+</div>
+<div class="section" id="getting-a-session-from-a-proxy">
+<h2>Getting a Session from a proxy<a class="headerlink" href="#getting-a-session-from-a-proxy" title="Permalink to this headline">¶</a></h2>
+<p>This section explains how to get a <a class="reference internal" href="../api/python/session.html#qi.Session" title="qi.Session"><tt class="xref py py-class docutils literal"><span class="pre">qi.Session</span></tt></a> from naoqi1.</p>
+<p>This can be used in NAOqi1 script or in Choregraphe behaviors.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">naoqi</span>
+
+<span class="c">#imagine you have a NAOqi1 proxy on almemory</span>
+<span class="n">mem</span> <span class="o">=</span> <span class="n">naoqi</span><span class="o">.</span><span class="n">ALProxy</span><span class="p">(</span><span class="s">&quot;ALMemory&quot;</span><span class="p">,</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">9559</span><span class="p">)</span>
+
+<span class="c">#get a NAOqi2 session</span>
+<span class="n">ses</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+
+<span class="c">#then you can use the session like you want</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subscribe-to-a-memory-event">
+<h2>Subscribe to a memory event<a class="headerlink" href="#subscribe-to-a-memory-event" title="Permalink to this headline">¶</a></h2>
+<p>When using NAOqi2 you do not have to be a module to subscribe to a memory event, you
+just have to specify a callback.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You have to keep the SignalSubscriber returned by ALMemory.Subscriber to keep the callback
+being called.</p>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">mycallback</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+  <span class="k">print</span> <span class="s">&quot;val:&quot;</span><span class="p">,</span> <span class="n">value</span>
+
+<span class="n">mem</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">service</span><span class="p">(</span><span class="s">&quot;ALMemory&quot;</span><span class="p">)</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">subscriber</span><span class="p">(</span><span class="s">&quot;foo/bar&quot;</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">mycallback</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you want to have the key in your callback you can use functools.partial.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">functools</span>
+
+<span class="k">def</span> <span class="nf">mycallback2</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+  <span class="k">print</span> <span class="s">&quot;key:&quot;</span><span class="p">,</span> <span class="n">key</span>
+  <span class="k">print</span> <span class="s">&quot;val:&quot;</span><span class="p">,</span> <span class="n">value</span>
+
+<span class="n">mem</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">service</span><span class="p">(</span><span class="s">&quot;ALMemory&quot;</span><span class="p">)</span>
+<span class="n">sub</span> <span class="o">=</span> <span class="n">mem</span><span class="o">.</span><span class="n">subscriber</span><span class="p">(</span><span class="s">&quot;foo/bar&quot;</span><span class="p">)</span>
+<span class="n">sub</span><span class="o">.</span><span class="n">signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="n">mycallback2</span><span class="p">,</span> <span class="s">&quot;foo/bar&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pcall-vs-qi-async">
+<h2>PCall vs qi.async<a class="headerlink" href="#pcall-vs-qi-async" title="Permalink to this headline">¶</a></h2>
+<p>NAOqi2 modules do not support pCall but they do support a more generic asynchronous mechanism <a class="reference internal" href="../api/python/async.html#qi.async" title="qi.async"><tt class="xref py py-func docutils literal"><span class="pre">qi.async()</span></tt></a>. If you want your call to be asynchronous
+you can use <a class="reference internal" href="../api/python/async.html#qi.async" title="qi.async"><tt class="xref py py-func docutils literal"><span class="pre">qi.async()</span></tt></a> which returns a <a class="reference internal" href="../api/python/future.html#qi.Future" title="qi.Future"><tt class="xref py py-class docutils literal"><span class="pre">qi.Future</span></tt></a>. That <a class="reference internal" href="../api/python/future.html#qi.Future" title="qi.Future"><tt class="xref py py-class docutils literal"><span class="pre">qi.Future</span></tt></a> allow you to object the resulting value or error.</p>
+<p>However some NAOqi1 modules really depend on pCall. (most notably tts.say and motion.moveTo). In this case you can use the pCall method provided by ALModule. It will behave the same as the old way and return a pcallId usable with the stop and the wait method of ALModule.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">the pCall method is only available on ALModule, not on NAOqi2 services. So it&#8217;s availability depends on the service you are calling.</p>
+</div>
+<p>Let&#8217;s see an example with pCall:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tts</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">service</span><span class="p">(</span><span class="s">&quot;ALTextToSpeech&quot;</span><span class="p">)</span>
+<span class="n">pCallId</span> <span class="o">=</span> <span class="n">tts</span><span class="o">.</span><span class="n">pCall</span><span class="p">(</span><span class="s">&quot;say&quot;</span><span class="p">,</span> <span class="s">&quot;I love rock&#39;n&#39;pCall&quot;</span><span class="p">)</span>
+<span class="n">tts</span><span class="o">.</span><span class="n">stop</span><span class="p">(</span><span class="n">pcallId</span><span class="p">)</span> <span class="c">#oops that was not what I meant</span>
+<span class="c">#let&#39;s try again</span>
+<span class="n">pCallId</span> <span class="o">=</span> <span class="n">tts</span><span class="o">.</span><span class="n">pCall</span><span class="p">(</span><span class="s">&quot;say&quot;</span><span class="p">,</span> <span class="s">&quot;I love rock&#39;n&#39;roll&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now let&#8217;s imagine you want to call a function and do something when the function finishes:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">tts</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">service</span><span class="p">(</span><span class="s">&quot;ALTextToSpeech&quot;</span><span class="p">)</span>
+<span class="n">fut</span> <span class="o">=</span> <span class="n">qi</span><span class="o">.</span><span class="n">async</span><span class="p">(</span><span class="n">tts</span><span class="o">.</span><span class="n">say</span><span class="p">,</span> <span class="s">&quot;I Love rock&#39;n&#39;sync&quot;</span><span class="p">)</span>
+<span class="c">#do some work here</span>
+
+<span class="c">#either wait and get the value</span>
+<span class="k">print</span> <span class="s">&quot;value:&quot;</span><span class="p">,</span> <span class="n">fut</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+
+<span class="c">#or add a callback that will be called when the function returns</span>
+<span class="k">def</span> <span class="nf">mycb</span><span class="p">(</span><span class="n">fut</span><span class="p">):</span>
+  <span class="k">print</span> <span class="s">&quot;value:&quot;</span><span class="p">,</span> <span class="n">fut</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+<span class="n">fut</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="n">mycb</span><span class="p">)</span>
+<span class="c">#continue working while tts.say proceeds</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="py-service.html" title="How to write a qimessaging service in Python">How to write a qimessaging service in Python</a>
+     |
+    <a href="index.html" title="User Guides" accesskey="U">User Guides</a>
+   |
+    <a href="py-log-client.html" title="How to receive and send logs in Python">How to receive and send logs in Python</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="cxx-client.html">How to write a qimessaging client in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-service.html">How to write a qimessaging service in C++</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-register-types.html">Registering types in the type system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-async.html">Asynchronous operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-log.html">Using qi::log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-linguist.html">Internationalization Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-path.html">Handling Paths Guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-path.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-path.html#using-namespace-path">Using Namespace path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cxx-path.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py-client.html">How to write a qimessaging client in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py-service.html">How to write a qimessaging service in Python</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">How to switch from NAOqi1 to NAOqi2</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="py-log-client.html">How to receive and send logs in Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qi-package-services.html">Packaging services in an application</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">How to switch from NAOqi1 to NAOqi2</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#naoqi2-main-features">NAOqi2 main features</a></li>
+<li><a class="reference internal" href="#getting-a-session-from-a-proxy">Getting a Session from a proxy</a></li>
+<li><a class="reference internal" href="#subscribe-to-a-memory-event">Subscribe to a memory event</a></li>
+<li><a class="reference internal" href="#pcall-vs-qi-async">PCall vs qi.async</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="py-service.html" title="How to write a qimessaging service in Python">previous</a>
+     |
+    <a href="index.html" title="User Guides" accesskey="U">up</a>
+   |
+    <a href="py-log-client.html" title="How to receive and send logs in Python">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

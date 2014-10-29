@@ -1,0 +1,1264 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qi::AnyValue &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../../index.html" />
+    <link rel="up" title="C++ qi API Reference" href="index.html" />
+    <link rel="next" title="qi::AnyFunction" href="anyfunction.html" />
+    <link rel="prev" title="qi::ApplicationSession" href="applicationsession.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>
+         |
+        <a title="Site map" href="../../contents.html">Site map</a>
+         |
+        <a title="Search" href="../../search.html">Search</a>
+         |
+        <a title="Index" href="../../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="applicationsession.html" title="qi::ApplicationSession">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="anyfunction.html" title="qi::AnyFunction">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="api-cpp-anyvalue">
+            
+  <div class="section" id="qi-anyvalue">
+<h1>qi::AnyValue<a class="headerlink" href="#qi-anyvalue" title="Permalink to this headline">¶</a></h1>
+<p>The class <a class="reference internal" href="#qi::AnyValue" title="qi::AnyValue"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::AnyValue</span></tt></a> is a dynamic value which can contain anything. It
+works like a normal variable and allows you to store any type and get it back,
+but also use the variable without converting it back to its real type.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<strong><p class="rubric">Global Classes</p>
+</strong><ul>
+<li><p class="first">class qi::AnyValue</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (class qi::AnyValue)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::detail::AnyReferenceBase::setTuple__AnyReferenceVectorCR">qi::detail::AnyReferenceBase::setTuple</a><p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setString__ssCR">qi::detail::AnyReferenceBase::setString</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asDouble">qi::detail::AnyReferenceBase::asDouble</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toDoubleC">qi::detail::AnyReferenceBase::toDouble</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toListC">qi::detail::AnyReferenceBase::toList</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asInt64">qi::detail::AnyReferenceBase::asInt64</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asInt16">qi::detail::AnyReferenceBase::asInt16</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asString">qi::detail::AnyReferenceBase::asString</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::convertCopy__TypeInterfacePC">qi::detail::AnyReferenceBase::convertCopy</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::sizeC">qi::detail::AnyReferenceBase::size</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::cloneC">qi::detail::AnyReferenceBase::clone</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::mul-operatorC">qi::detail::AnyReferenceBase::operator*</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::append__TCR">qi::detail::AnyReferenceBase::append</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::subscript-operator__KCR">qi::detail::AnyReferenceBase::operator[]</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asRawC">qi::detail::AnyReferenceBase::asRaw</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::typeC">qi::detail::AnyReferenceBase::type</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::beginC">qi::detail::AnyReferenceBase::begin</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::to__XC">qi::detail::AnyReferenceBase::to</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::signature__bC">qi::detail::AnyReferenceBase::signature</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::find__KCR">qi::detail::AnyReferenceBase::find</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::_insert__AnyReferenceCR.AnyReferenceCR">qi::detail::AnyReferenceBase::_insert</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::update__AutoAnyReferenceCR">qi::detail::AnyReferenceBase::update</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asUInt32">qi::detail::AnyReferenceBase::asUInt32</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toStringC">qi::detail::AnyReferenceBase::toString</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toMapC">qi::detail::AnyReferenceBase::toMap</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::ptr__b">qi::detail::AnyReferenceBase::ptr</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asFloat">qi::detail::AnyReferenceBase::asFloat</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::destroy">qi::detail::AnyReferenceBase::destroy</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toUIntC">qi::detail::AnyReferenceBase::toUInt</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asListValuePtr">qi::detail::AnyReferenceBase::asListValuePtr</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::_element__AnyReferenceCR.b">qi::detail::AnyReferenceBase::_element</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setDouble__double">qi::detail::AnyReferenceBase::setDouble</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::fromPtr__TCP">qi::detail::AnyReferenceBase::fromPtr</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toIntC">qi::detail::AnyReferenceBase::toInt</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asInt32">qi::detail::AnyReferenceBase::asInt32</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setDynamic__AnyReferenceCR">qi::detail::AnyReferenceBase::setDynamic</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setUInt__uint64_t">qi::detail::AnyReferenceBase::setUInt</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::element__KCR">qi::detail::AnyReferenceBase::element</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::contentC">qi::detail::AnyReferenceBase::content</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::insert__KCR.VCR">qi::detail::AnyReferenceBase::insert</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setInt__int64_t">qi::detail::AnyReferenceBase::setInt</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toTuple__bC">qi::detail::AnyReferenceBase::toTuple</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asMapValuePtr">qi::detail::AnyReferenceBase::asMapValuePtr</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::membersTypeC">qi::detail::AnyReferenceBase::membersType</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::isValueC">qi::detail::AnyReferenceBase::isValue</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asTupleValuePtr">qi::detail::AnyReferenceBase::asTupleValuePtr</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asInt8">qi::detail::AnyReferenceBase::asInt8</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toObjectC">qi::detail::AnyReferenceBase::toObject</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::kindC">qi::detail::AnyReferenceBase::kind</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::convert__TypeInterfacePC">qi::detail::AnyReferenceBase::convert</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::rawValueC">qi::detail::AnyReferenceBase::rawValue</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setRaw__cCP.s">qi::detail::AnyReferenceBase::setRaw</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::set__TCR">qi::detail::AnyReferenceBase::set</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::endC">qi::detail::AnyReferenceBase::end</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asUInt16">qi::detail::AnyReferenceBase::asUInt16</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::from__TCR">qi::detail::AnyReferenceBase::from</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::isValidC">qi::detail::AnyReferenceBase::isValid</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asUInt64">qi::detail::AnyReferenceBase::asUInt64</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::toFloatC">qi::detail::AnyReferenceBase::toFloat</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::_append__AnyReferenceCR">qi::detail::AnyReferenceBase::_append</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::as">qi::detail::AnyReferenceBase::as</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::asUInt8">qi::detail::AnyReferenceBase::asUInt8</a></p>
+<p><a class="reference internal" href="#qi::detail::AnyReferenceBase::setFloat__float">qi::detail::AnyReferenceBase::setFloat</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::set__TCR">qi::AnyValue::set</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::release">qi::AnyValue::release</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::make">qi::AnyValue::make</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::makeTupleFromValue__AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR">qi::AnyValue::makeTupleFromValue</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::makeTuple__AnyReferenceVectorCR">qi::AnyValue::makeTuple</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::~AnyValue">qi::AnyValue::~AnyValue</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::asReferenceC">qi::AnyValue::asReference</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::makeGenericMap__std::map:AnyReference.AnyReference:CR">qi::AnyValue::makeGenericMap</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::from__TCR">qi::AnyValue::from</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::swap__AnyValueR">qi::AnyValue::swap</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::makeMap__std::map:AnyReference.AnyReference:CR">qi::AnyValue::makeMap</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::AnyValue">qi::AnyValue::AnyValue</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::makeList__AnyReferenceVectorCR">qi::AnyValue::makeList</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::assign-operator__AnyReferenceCR">qi::AnyValue::operator=</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::makeGenericList__AnyReferenceVectorCR">qi::AnyValue::makeGenericList</a></p>
+<p><a class="reference internal" href="#qi::AnyValue::reset">qi::AnyValue::reset</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+</dl>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="storing-and-retrieving-a-value">
+<h3>Storing and retrieving a value<a class="headerlink" href="#storing-and-retrieving-a-value" title="Permalink to this headline">¶</a></h3>
+<p>Storing and retrieving a value is easy enough:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/anyvalue.hpp&gt;</span>
+
+<span class="k">struct</span> <span class="n">MyStruct</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">canard</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="n">MyStruct</span> <span class="n">s</span><span class="p">;</span>
+<span class="n">s</span><span class="p">.</span><span class="n">canard</span> <span class="o">=</span> <span class="mi">12</span><span class="p">;</span>
+<span class="c1">// this creates a copy and stores it in value</span>
+<span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span> <span class="n">value</span> <span class="o">=</span> <span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+
+<span class="n">MyStruct</span><span class="o">&amp;</span> <span class="n">s2</span> <span class="o">=</span> <span class="n">value</span><span class="p">.</span><span class="n">as</span><span class="o">&lt;</span><span class="n">MyStruct</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">s2</span><span class="p">.</span><span class="n">canard</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 12</span>
+
+<span class="c1">// would throw</span>
+<span class="c1">//value.as&lt;int&gt;();</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">When you use <tt class="xref cpp cpp-guess docutils literal"><span class="pre">as()</span></tt>, you must specify the exact same type that was passed to
+the AnyValue, you can&#8217;t store an <tt class="xref cpp cpp-guess docutils literal"><span class="pre">int</span></tt> and retrieve an <tt class="xref cpp cpp-guess docutils literal"><span class="pre">unsigned</span> <span class="pre">int</span></tt>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">As you can see, the type does not need to be registered in the type
+system for this to work.</p>
+</div>
+<p>If you don&#8217;t know the exact type stored, you can still use <tt class="xref cpp cpp-guess docutils literal"><span class="pre">to()</span></tt> which
+supports standard conversions:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="c1">// type can be changed</span>
+<span class="n">value</span> <span class="o">=</span> <span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="mf">42.3</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">.</span><span class="n">to</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 42</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-value-with-standard-types">
+<h3>Using the value with standard types<a class="headerlink" href="#using-the-value-with-standard-types" title="Permalink to this headline">¶</a></h3>
+<p>You can use a value without extracting its contents when it&#8217;s built from
+standard types like built-in types, vectors, maps. It also supports common
+operators.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">v</span><span class="p">;</span>
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">24</span><span class="p">);</span>
+<span class="n">v</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">42</span><span class="p">);</span>
+
+<span class="c1">// creates a copy</span>
+<span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span> <span class="n">value</span> <span class="o">=</span> <span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">[</span><span class="mi">2</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 42</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-value-with-registered-types">
+<h3>Using the value with registered types<a class="headerlink" href="#using-the-value-with-registered-types" title="Permalink to this headline">¶</a></h3>
+<p>The same thing can be achieved with registered types.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">Graph</span><span class="o">::</span><span class="n">Point</span> <span class="n">p</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">42</span><span class="p">);</span>
+<span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span> <span class="n">value</span> <span class="o">=</span> <span class="n">qi</span><span class="o">::</span><span class="n">AnyValue</span><span class="o">::</span><span class="n">from</span><span class="p">(</span><span class="n">p</span><span class="p">);</span>
+<span class="c1">// you can&#39;t use names (x and y) here because structs are registered as</span>
+<span class="c1">// tuples with annotations in the type system</span>
+<span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;, &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="n">as</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">()</span>
+  <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span> <span class="c1">// 12, 42</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qi-anyvalue-class-reference">
+<h3>qi::AnyValue Class Reference<a class="headerlink" href="#qi-anyvalue-class-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p> <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/anyvalue.hpp&gt;</span>
+</pre></div>
+</div>
+<ul>
+<li><strong>Inherits: </strong><a class="reference external" href=""><tt class="docutils literal"><span class="pre">qi::detail::AnyReferenceBase</span></tt></a></li>
+<li><strong>Inherited by: </strong><tt class="docutils literal"><span class="pre">qi::AnyIterator</span></tt></li>
+</ul>
+</div>
+<div class="section" id="public-functions">
+<h4>Public Functions<a class="headerlink" href="#public-functions" title="Permalink to this headline">¶</a></h4>
+<p><dl class="function function-index">
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::AnyValue"><tt class="xref cpp cpp-func docutils literal"><span class="pre">AnyValue</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::AnyValue__AnyValueCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">AnyValue</span></tt></a></tt><big>(</big>const AnyValue&amp; <em>b</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::AnyValue__AnyReferenceCR.b.b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">AnyValue</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>b</em>, bool <em>copy</em>, bool <em>free</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::AnyValue__AutoAnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">AnyValue</span></tt></a></tt><big>(</big>const AutoAnyReference&amp; <em>b</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::AnyValue__qi::TypeInterfaceP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">AnyValue</span></tt></a></tt><big>(</big>qi::TypeInterface* <em>type</em><big>)</big></dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::release"><tt class="xref cpp cpp-func docutils literal"><span class="pre">release</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::~AnyValue"><tt class="xref cpp cpp-func docutils literal"><span class="pre">~AnyValue</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::assign-operator__AnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator=</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>b</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::assign-operator__AnyValueCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator=</span></tt></a></tt><big>(</big>const AnyValue&amp; <em>b</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::reset"><tt class="xref cpp cpp-func docutils literal"><span class="pre">reset</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::reset__qi::TypeInterfaceP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">reset</span></tt></a></tt><big>(</big>qi::TypeInterface* <em>type</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::set__TCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>const T&amp; <em>t</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::reset__AnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">reset</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>src</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::reset__AnyReferenceCR.b.b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">reset</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>src</em>, bool <em>copy</em>, bool <em>free</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::swap__AnyValueR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">swap</span></tt></a></tt><big>(</big>AnyValue&amp; <em>b</em><big>)</big></dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::asReferenceC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asReference</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+</dl>
+
+</p>
+<p><dl class="function function-index">
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__TypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>TypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__ListTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>ListTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__StructTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>StructTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__MapTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>MapTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__IntTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>IntTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__FloatTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>FloatTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__RawTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>RawTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__StringTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>StringTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__PointerTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>PointerTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>std::pair&lt;AnyReference, bool&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convert__DynamicTypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convert</span></tt></a></tt><big>(</big>DynamicTypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>T*</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::ptr__b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">ptr</span></tt></a></tt><big>(</big>bool <em>check</em><big>)</big></dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::isValidC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isValid</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::isValueC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isValue</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::convertCopy__TypeInterfacePC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">convertCopy</span></tt></a></tt><big>(</big>TypeInterface* <em>targetType</em><big>)</big> const</dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::_element__AnyReferenceCR.b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">_element</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>key</em>, bool <em>throwOnFailure</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::_append__AnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">_append</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>element</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::_insert__AnyReferenceCR.AnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">_insert</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>key</em>, const AnyReference&amp; <em>val</em><big>)</big></dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::cloneC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">clone</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::destroy"><tt class="xref cpp cpp-func docutils literal"><span class="pre">destroy</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><tt class="xref cpp cpp-func docutils literal"></tt></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>T</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::to__XC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">to</span></tt></a></tt><big>(</big><em>const T&amp;</em><big>)</big> const</dt>
+<dt>
+<span>int64_t</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toIntC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toInt</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>uint64_t</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toUIntC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toUInt</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>float</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toFloatC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toFloat</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>double</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toDoubleC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toDouble</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::string</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toStringC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toString</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::vector&lt;T&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toListC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toList</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::map&lt;K, V&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toMapC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toMap</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyObject</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toObjectC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toObject</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::toTuple__bC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">toTuple</span></tt></a></tt><big>(</big>bool <em>homogeneous</em><big>)</big> const</dt>
+<dt>
+<span>T&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::as"><tt class="xref cpp cpp-func docutils literal"><span class="pre">as</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>int64_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asInt64"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asInt64</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>uint64_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asUInt64"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asUInt64</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>int32_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asInt32"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asInt32</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>uint32_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asUInt32"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asUInt32</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>int16_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asInt16"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asInt16</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>uint16_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asUInt16"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asUInt16</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>int8_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asInt8"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asInt8</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>uint8_t&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asUInt8"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asUInt8</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>double&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asDouble"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asDouble</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>float&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asFloat"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asFloat</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>std::string&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asString"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asString</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>std::pair&lt;char*, size_t&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asRawC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asRaw</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::contentC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">content</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyReferenceVector</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asTupleValuePtr"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asTupleValuePtr</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>AnyReferenceVector</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asListValuePtr"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asListValuePtr</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>std::map&lt;AnyReference, AnyReference&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::asMapValuePtr"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asMapValuePtr</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::subscript-operator__KCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator[]</span></tt></a></tt><big>(</big>const K&amp; <em>key</em><big>)</big></dt>
+<dt>
+<span>E&amp;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::element__KCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">element</span></tt></a></tt><big>(</big>const K&amp; <em>key</em><big>)</big></dt>
+<dt>
+<span>size_t</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::sizeC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">size</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::append__TCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">append</span></tt></a></tt><big>(</big>const T&amp; <em>element</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::insert__KCR.VCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">insert</span></tt></a></tt><big>(</big>const K&amp; <em>key</em>, const V&amp; <em>val</em><big>)</big></dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::find__KCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">find</span></tt></a></tt><big>(</big>const K&amp; <em>key</em><big>)</big></dt>
+<dt>
+<span>AnyIterator</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::beginC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">begin</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyIterator</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::endC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">end</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::mul-operatorC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator*</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>qi::Signature</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::signature__bC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">signature</span></tt></a></tt><big>(</big>bool <em>resolveDynamic</em><big>)</big> const</dt>
+<dt>
+<span>TypeKind</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::kindC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">kind</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::update__AutoAnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">update</span></tt></a></tt><big>(</big>const AutoAnyReference&amp; <em>b</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__TCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>const T&amp; <em>val</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__int64_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>int64_t <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__int32_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>int32_t <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__uint64_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>uint64_t <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__uint32_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>uint32_t <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__float"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>float <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__double"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>double <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::set__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">set</span></tt></a></tt><big>(</big>const std::string&amp; <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setInt__int64_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setInt</span></tt></a></tt><big>(</big>int64_t <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setUInt__uint64_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setUInt</span></tt></a></tt><big>(</big>uint64_t <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setFloat__float"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setFloat</span></tt></a></tt><big>(</big>float <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setDouble__double"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setDouble</span></tt></a></tt><big>(</big>double <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setString__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setString</span></tt></a></tt><big>(</big>const std::string&amp; <em>v</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setDynamic__AnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setDynamic</span></tt></a></tt><big>(</big>const AnyReference&amp; <em>value</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setRaw__cCP.s"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setRaw</span></tt></a></tt><big>(</big>const char* <em>buffer</em>, size_t <em>size</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::setTuple__AnyReferenceVectorCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setTuple</span></tt></a></tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big></dt>
+<dt>
+<span>TypeInterface*</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::typeC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">type</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>std::vector&lt;TypeInterface*&gt;</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::membersTypeC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">membersType</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>void*</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::rawValueC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">rawValue</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+</dl>
+
+</p>
+</div>
+<div class="section" id="public-static-functions">
+<h4>Public Static Functions<a class="headerlink" href="#public-static-functions" title="Permalink to this headline">¶</a></h4>
+<p><dl class="function function-index">
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::makeTuple__AnyReferenceVectorCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">makeTuple</span></tt></a></tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::makeTupleFromValue__AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">makeTupleFromValue</span></tt></a></tt><big>(</big>const AutoAnyReference&amp; <em>v0</em>, const AutoAnyReference&amp; <em>v1</em>, const AutoAnyReference&amp; <em>v2</em>, const AutoAnyReference&amp; <em>v3</em>, const AutoAnyReference&amp; <em>v4</em>, const AutoAnyReference&amp; <em>v5</em>, const AutoAnyReference&amp; <em>v6</em>, const AutoAnyReference&amp; <em>v7</em>, const AutoAnyReference&amp; <em>v8</em>, const AutoAnyReference&amp; <em>v9</em><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::makeList__AnyReferenceVectorCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">makeList</span></tt></a></tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::makeGenericList__AnyReferenceVectorCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">makeGenericList</span></tt></a></tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::makeMap__std::map:AnyReference.AnyReference:CR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">makeMap</span></tt></a></tt><big>(</big>const std::map&lt;AnyReference, AnyReference&gt;&amp; <em>values</em><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::makeGenericMap__std::map:AnyReference.AnyReference:CR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">makeGenericMap</span></tt></a></tt><big>(</big>const std::map&lt;AnyReference, AnyReference&gt;&amp; <em>values</em><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::make"><tt class="xref cpp cpp-func docutils literal"><span class="pre">make</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>AnyValue</span> <tt class="descname"><a class="reference external" href="#qi::AnyValue::from__TCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">from</span></tt></a></tt><big>(</big>const T&amp; <em>r</em><big>)</big></dt>
+</dl>
+
+</p>
+<p><dl class="function function-index">
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::from__TCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">from</span></tt></a></tt><big>(</big>const T&amp; <em>ref</em><big>)</big></dt>
+<dt>
+<span>AnyReference</span> <tt class="descname"><a class="reference external" href="#qi::detail::AnyReferenceBase::fromPtr__TCP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">fromPtr</span></tt></a></tt><big>(</big>const T* <em>ptr</em><big>)</big></dt>
+</dl>
+
+</p>
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p>Represent any value supported by the typesystem. when constructed or set the value is copied. as a pointer to the real value. to convert the value if needed and copy to the required type.</p>
+</div>
+<div class="section" id="functions">
+<h4>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h4>
+<p><dl class="function">
+<dt id="qi::AnyValue::makeTuple__AnyReferenceVectorCR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">makeTuple</tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big><a class="headerlink" href="#qi::AnyValue::makeTuple__AnyReferenceVectorCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>The following functions construct a AnyValue from containers of AnyReference.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::makeTupleFromValue__AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">makeTupleFromValue</tt><big>(</big>const AutoAnyReference&amp; <em>v0</em>, const AutoAnyReference&amp; <em>v1</em>, const AutoAnyReference&amp; <em>v2</em>, const AutoAnyReference&amp; <em>v3</em>, const AutoAnyReference&amp; <em>v4</em>, const AutoAnyReference&amp; <em>v5</em>, const AutoAnyReference&amp; <em>v6</em>, const AutoAnyReference&amp; <em>v7</em>, const AutoAnyReference&amp; <em>v8</em>, const AutoAnyReference&amp; <em>v9</em><big>)</big><a class="headerlink" href="#qi::AnyValue::makeTupleFromValue__AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR.AutoAnyReferenceCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::makeList__AnyReferenceVectorCR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">makeList</tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big><a class="headerlink" href="#qi::AnyValue::makeList__AnyReferenceVectorCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::makeGenericList__AnyReferenceVectorCR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">makeGenericList</tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big><a class="headerlink" href="#qi::AnyValue::makeGenericList__AnyReferenceVectorCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::makeMap__std::map:AnyReference.AnyReference:CR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">makeMap</tt><big>(</big>const std::map&lt;AnyReference, AnyReference&gt;&amp; <em>values</em><big>)</big><a class="headerlink" href="#qi::AnyValue::makeMap__std::map:AnyReference.AnyReference:CR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::makeGenericMap__std::map:AnyReference.AnyReference:CR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">makeGenericMap</tt><big>(</big>const std::map&lt;AnyReference, AnyReference&gt;&amp; <em>values</em><big>)</big><a class="headerlink" href="#qi::AnyValue::makeGenericMap__std::map:AnyReference.AnyReference:CR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::make">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">make</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::AnyValue::make" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create and return a AnyValue of type T.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::from__TCR">
+<em class="property">static</em> AnyValue <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">from</tt><big>(</big>const T&amp; <em>r</em><big>)</big><a class="headerlink" href="#qi::AnyValue::from__TCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construction and assign. Construct a AnyValue with storage pointing to ptr.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::AnyValue">
+ <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">AnyValue</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::AnyValue::AnyValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::AnyValue__AnyValueCR">
+ <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">AnyValue</tt><big>(</big>const AnyValue&amp; <em>b</em><big>)</big><a class="headerlink" href="#qi::AnyValue::AnyValue__AnyValueCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::AnyValue__AnyReferenceCR.b.b">
+ <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">AnyValue</tt><big>(</big>const AnyReference&amp; <em>b</em>, bool <em>copy</em>, bool <em>free</em><big>)</big><a class="headerlink" href="#qi::AnyValue::AnyValue__AnyReferenceCR.b.b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::AnyValue__AutoAnyReferenceCR">
+ <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">AnyValue</tt><big>(</big>const AutoAnyReference&amp; <em>b</em><big>)</big><a class="headerlink" href="#qi::AnyValue::AnyValue__AutoAnyReferenceCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::AnyValue__qi::TypeInterfaceP">
+ <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">AnyValue</tt><big>(</big>qi::TypeInterface* <em>type</em><big>)</big><a class="headerlink" href="#qi::AnyValue::AnyValue__qi::TypeInterfaceP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::release">
+AnyReference <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">release</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::AnyValue::release" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the contained value, and reset the AnyValue. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::~AnyValue">
+ <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">~AnyValue</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::AnyValue::~AnyValue" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::assign-operator__AnyReferenceCR">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">operator=</tt><big>(</big>const AnyReference&amp; <em>b</em><big>)</big><a class="headerlink" href="#qi::AnyValue::assign-operator__AnyReferenceCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::assign-operator__AnyValueCR">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">operator=</tt><big>(</big>const AnyValue&amp; <em>b</em><big>)</big><a class="headerlink" href="#qi::AnyValue::assign-operator__AnyValueCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::reset">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::AnyValue::reset" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::reset__qi::TypeInterfaceP">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">reset</tt><big>(</big>qi::TypeInterface* <em>type</em><big>)</big><a class="headerlink" href="#qi::AnyValue::reset__qi::TypeInterfaceP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::set__TCR">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">set</tt><big>(</big>const T&amp; <em>t</em><big>)</big><a class="headerlink" href="#qi::AnyValue::set__TCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the value to val, which will be converted if required.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::reset__AnyReferenceCR">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">reset</tt><big>(</big>const AnyReference&amp; <em>src</em><big>)</big><a class="headerlink" href="#qi::AnyValue::reset__AnyReferenceCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::reset__AnyReferenceCR.b.b">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">reset</tt><big>(</big>const AnyReference&amp; <em>src</em>, bool <em>copy</em>, bool <em>free</em><big>)</big><a class="headerlink" href="#qi::AnyValue::reset__AnyReferenceCR.b.b" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::swap__AnyValueR">
+void <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">swap</tt><big>(</big>AnyValue&amp; <em>b</em><big>)</big><a class="headerlink" href="#qi::AnyValue::swap__AnyValueR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::AnyValue::asReferenceC">
+AnyReference <tt class="descclassname">qi::AnyValue::</tt><tt class="descname">asReference</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::AnyValue::asReferenceC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</p>
+<p><dl class="function">
+<dt>
+<em class="property">static</em> AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">from</tt><big>(</big>const T&amp; <em>ref</em><big>)</big></dt>
+<dd><p>Construction and assign. Construct a AnyValue with storage pointing to ptr.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<em class="property">static</em> AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">fromPtr</tt><big>(</big>const T* <em>ptr</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>TypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the pair (convertedValue, trueIfCopiedAndNeedsDestroy) </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>ListTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>StructTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>MapTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>IntTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>FloatTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>RawTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>StringTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>PointerTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;AnyReference, bool&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convert</tt><big>(</big>DynamicTypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+T* <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">ptr</tt><big>(</big>bool <em>check</em> = true<big>)</big></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>check</strong> &#8211; if false, does not validate type before converting </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">a pointer to the value as a T or 0 if value is not a T. </p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Return the typed pointer behind a AnyReference. T <em>must</em> be the type of the value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+bool <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">isValid</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+bool <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">isValue</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if value is valid and not void </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">convertCopy</tt><big>(</big>TypeInterface* <em>targetType</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p>Helper function that converts and always clone.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">_element</tt><big>(</big>const AnyReference&amp; <em>key</em>, bool <em>throwOnFailure</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">_append</tt><big>(</big>const AnyReference&amp; <em>element</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">_insert</tt><big>(</big>const AnyReference&amp; <em>key</em>, const AnyReference&amp; <em>val</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">clone</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">destroy</tt><big>(</big><big>)</big></dt>
+<dd><p>Deletes storage.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<tt class="descname">()</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+T <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">to</tt><big>(</big><em>const T&amp;</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p>Similar to previous method, but uses a dummy value to get the target type.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+int64_t <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toInt</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+uint64_t <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toUInt</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+float <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toFloat</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+double <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toDouble</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::string <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toString</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::vector&lt;T&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toList</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::map&lt;K, V&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toMap</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+AnyObject <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toObject</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+AnyValue <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">toTuple</tt><big>(</big>bool <em>homogeneous</em><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>homogeneous</strong> &#8211; if true, all tuple elements will be of the type of the list element type. If false, the effective type of elements of kind dynamic will be used. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Convert the value to a tuple. If value is currently a tuple, it will be returned. If value is a list its elements will become the tuple components.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+T&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">as</tt><big>(</big><big>)</big></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a typed reference to the underlying value </td>
+</tr>
+</tbody>
+</table>
+<p>Read and update functions The following functions access or modify the existing value. They never change the storage location or type. They will fail by throwing an exception if the requested operation is incompatible with the current value type.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+int64_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asInt64</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+uint64_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asUInt64</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+int32_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asInt32</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+uint32_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asUInt32</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+int16_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asInt16</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+uint16_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asUInt16</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+int8_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asInt8</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+uint8_t&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asUInt8</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+double&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asDouble</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+float&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asFloat</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::string&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asString</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::pair&lt;char*, size_t&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asRaw</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a pair of (char*, size) corresponding to the raw buffer. No copy made. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">content</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">contained AnyValue or throw if type is not dynamic. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyReferenceVector <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asTupleValuePtr</tt><big>(</big><big>)</big></dt>
+<dd><p>Container partial unboxing. The following functions unbox the container-part of the value. The values in the contairer are exposed as AnyReference. The values can be modified using the set and as function families, But the container itself is a copy.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyReferenceVector <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asListValuePtr</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::map&lt;AnyReference, AnyReference&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">asMapValuePtr</tt><big>(</big><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">operator[]</tt><big>(</big>const K&amp; <em>key</em><big>)</big></dt>
+<dd><p>In-place container manipulation. Return a reference to container element at index or key idx. Use set methods on the result for inplace modification. Behavior depends on the container kind:
+List or tuple: The key must be of integral type. Boundary checks are performed.Map: The key must be of a convertible type to the container key type. If the key is not found in the container, a new default-valued Element will be created, inserted. and returned. the returned value is only valid until owning container is changed.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+E&amp; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">element</tt><big>(</big>const K&amp; <em>key</em><big>)</big></dt>
+<dd><p>Call operator[](key).as&lt;E&gt;, element type must match E.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+size_t <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">size</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">append</tt><big>(</big>const T&amp; <em>element</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">insert</tt><big>(</big>const K&amp; <em>key</em>, const V&amp; <em>val</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">find</tt><big>(</big>const K&amp; <em>key</em><big>)</big></dt>
+<dd><p>Similar to operator[](), but return an empty AnyValue If the key is not present.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyIterator <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">begin</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p>Return an iterator on the beginning of the container.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyIterator <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">end</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p>Return an iterator on the end of the container.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+AnyReference <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">operator*</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p>Dereference pointer, iterator or dynamic.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+<a class="reference external" href="signature.html">qi::Signature</a> <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">signature</tt><big>(</big>bool <em>resolveDynamic</em> = false<big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+TypeKind <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">kind</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">update</tt><big>(</big>const AutoAnyReference&amp; <em>b</em><big>)</big></dt>
+<dd><p>TODO: update == set (remove one) Update the value with the one in b</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>const T&amp; <em>val</em><big>)</big></dt>
+<dd><p>Update the value to val, which will be converted if required.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>int64_t <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>int32_t <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>uint64_t <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>uint32_t <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>float <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>double <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">set</tt><big>(</big>const std::string&amp; <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setInt</tt><big>(</big>int64_t <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setUInt</tt><big>(</big>uint64_t <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setFloat</tt><big>(</big>float <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setDouble</tt><big>(</big>double <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setString</tt><big>(</big>const std::string&amp; <em>v</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setDynamic</tt><big>(</big>const AnyReference&amp; <em>value</em><big>)</big></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setRaw</tt><big>(</big>const char* <em>buffer</em>, size_t <em>size</em><big>)</big></dt>
+<dd><p>set the value of the raw buffer, a copy will be made.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+void <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">setTuple</tt><big>(</big>const AnyReferenceVector&amp; <em>values</em><big>)</big></dt>
+<dd><p>set the values of the tuple. A copy will be made.</p>
+</dd></dl>
+
+<dl class="function">
+<dt>
+TypeInterface* <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">type</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt>
+std::vector&lt;TypeInterface*&gt; <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">membersType</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of tuple elements type, or throw if not a tuple </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt>
+void* <tt class="descclassname">qi::detail::AnyReferenceBase::</tt><tt class="descname">rawValue</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt></dt>
+<dd></dd></dl>
+
+</p>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="applicationsession.html" title="qi::ApplicationSession">qi::ApplicationSession</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">C++ qi API Reference</a>
+   |
+    <a href="anyfunction.html" title="qi::AnyFunction">qi::AnyFunction</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API References</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ qi API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actor.html">qi::Actor and qi::Strand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">qi::Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applicationsession.html">qi::ApplicationSession</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">qi::AnyValue</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="anyfunction.html">qi::AnyFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyobject.html">qi::Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anymodule.html">qi::AnyModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic.html">qi::Atomic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer.html">qi::Buffer, qi::BufferReader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binarycodec.html">Binary Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock.html">qi::Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamicobjectbuilder.html">qi::DynamicObjectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventloop.html">qi::EventLoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="future.html">qi::Promise, qi::Future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocolor.html">qi::IOColor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsoncodec.html">JSON Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">qi::log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macro.html">qi helper macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">qi::MetaObject, qi::MetaMethod, qi::MetaSignal, qi::MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objecttypebuilder.html">qi::ObjectTypeBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="os.html">qi::os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html">qi::path namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="periodictask.html">qi::PeriodicTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preproc.html">qi preprocessor macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">qi::Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session.html">qi::Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">qi::Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signature.html">qi::Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">qi::stats namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trackable.html">qi::Trackable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">qi::Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">qi::Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">qi::Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-classindex.html">C++ Class Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-funcindex.html">C++ Function Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python qi API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">qi::AnyValue</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a><ul>
+<li><a class="reference internal" href="#storing-and-retrieving-a-value">Storing and retrieving a value</a></li>
+<li><a class="reference internal" href="#using-the-value-with-standard-types">Using the value with standard types</a></li>
+<li><a class="reference internal" href="#using-the-value-with-registered-types">Using the value with registered types</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#qi-anyvalue-class-reference">qi::AnyValue Class Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#public-functions">Public Functions</a></li>
+<li><a class="reference internal" href="#public-static-functions">Public Static Functions</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#functions">Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="applicationsession.html" title="qi::ApplicationSession">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="anyfunction.html" title="qi::AnyFunction">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

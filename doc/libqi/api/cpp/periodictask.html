@@ -1,0 +1,509 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qi::PeriodicTask &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../../index.html" />
+    <link rel="up" title="C++ qi API Reference" href="index.html" />
+    <link rel="next" title="qi preprocessor macros" href="preproc.html" />
+    <link rel="prev" title="qi::path namespace" href="path.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>
+         |
+        <a title="Site map" href="../../contents.html">Site map</a>
+         |
+        <a title="Search" href="../../search.html">Search</a>
+         |
+        <a title="Index" href="../../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="path.html" title="qi::path namespace">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="preproc.html" title="qi preprocessor macros">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="api-cpp-periodictask">
+            
+  <div class="section" id="qi-periodictask">
+<h1>qi::PeriodicTask<a class="headerlink" href="#qi-periodictask" title="Permalink to this headline">¶</a></h1>
+<p>qimessaging provides numerous ways of doing async operations, but sometimes you
+need an async operation which repeats itself. This is what you can do with
+<a class="reference internal" href="#qi::PeriodicTask" title="qi::PeriodicTask"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::PeriodicTask</span></tt></a>.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<strong><p class="rubric">Global Classes</p>
+</strong><ul>
+<li><p class="first">class qi::PeriodicTask</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (class qi::PeriodicTask)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::PeriodicTask::setName__ssCR">qi::PeriodicTask::setName</a><p><a class="reference internal" href="#qi::PeriodicTask::setUsPeriod__qi::int64_t">qi::PeriodicTask::setUsPeriod</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::stop">qi::PeriodicTask::stop</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::isRunningC">qi::PeriodicTask::isRunning</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::~PeriodicTask">qi::PeriodicTask::~PeriodicTask</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::asyncStop">qi::PeriodicTask::asyncStop</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::isStoppingC">qi::PeriodicTask::isStopping</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::compensateCallbackTime__b">qi::PeriodicTask::compensateCallbackTime</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::setStrand__qi::StrandP">qi::PeriodicTask::setStrand</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::start__b">qi::PeriodicTask::start</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::setCallback__CallbackCR">qi::PeriodicTask::setCallback</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::trigger">qi::PeriodicTask::trigger</a></p>
+<p><a class="reference internal" href="#qi::PeriodicTask::PeriodicTask">qi::PeriodicTask::PeriodicTask</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+</dl>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-a-periodic-task">
+<h3>Using a periodic task<a class="headerlink" href="#using-a-periodic-task" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/periodictask.hpp&gt;</span>
+
+<span class="kt">void</span> <span class="nf">printDate</span><span class="p">();</span>
+
+<span class="n">qi</span><span class="o">::</span><span class="n">PeriodicTask</span> <span class="n">task</span><span class="p">;</span>
+<span class="n">task</span><span class="p">.</span><span class="n">setName</span><span class="p">(</span><span class="s">&quot;print date&quot;</span><span class="p">);</span>
+<span class="n">task</span><span class="p">.</span><span class="n">setUsPeriod</span><span class="p">(</span><span class="mi">1000</span><span class="o">*</span><span class="mi">1000</span><span class="p">);</span>
+<span class="n">task</span><span class="p">.</span><span class="n">setCallback</span><span class="p">(</span><span class="n">printDate</span><span class="p">);</span>
+<span class="n">task</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+
+<span class="c1">// and at the end</span>
+<span class="n">task</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>This will create a task which will call printDate every second. The name of the
+task is not used yet, but may be useful to provide debug information later.
+<tt class="xref cpp cpp-guess docutils literal"><span class="pre">start()</span></tt> will call the task immediately (unless given false as argument) and
+call it again every second.</p>
+<p>In all cases, <a class="reference internal" href="#qi::PeriodicTask::PeriodicTask" title="qi::PeriodicTask::PeriodicTask"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">PeriodicTask</span></tt></a> never gives hard time guaranties (like realtime).
+If there is a lot of work in the event loop, your task may be called later than
+expected.</p>
+<p>However, <a class="reference internal" href="#qi::PeriodicTask::PeriodicTask" title="qi::PeriodicTask::PeriodicTask"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">PeriodicTask</span></tt></a> guaranties you that it will <em>never</em> call your callback
+twice at the same time, even if it missed it&#8217;s deadline. Also, when you call
+stop, it will block until the callback is finished if it&#8217;s currently running.</p>
+</div>
+<div class="section" id="about-scheduling-and-callback-time-compensation">
+<h3>About scheduling and callback time compensation<a class="headerlink" href="#about-scheduling-and-callback-time-compensation" title="Permalink to this headline">¶</a></h3>
+<p>Sometime, your callback may be slow and you may wonder what happens in these
+cases.</p>
+<p>Here is a simple task with a 5s period and a 3s callback:</p>
+<div class="highlight-python"><pre>v                                v
++-----------+                    +-----------
++  Task 3s  +      wait 5s       +  Task 3s  ...
++-----------+--------------------+-----------</pre>
+</div>
+<p>Same thing with callback compensation enabled:</p>
+<div class="highlight-python"><pre>v                     v
++-----------+         +-----------
++  Task 3s  + wait 2s +  Task 3s  ...
++-----------+---------+-----------</pre>
+</div>
+<p>Same thing again with a slower task:</p>
+<div class="highlight-python"><pre>v                            v
++----------------------------+---------------------------+----
++         Task 7s            +         Task 7s           +  ...
++----------------------------+---------------------------+----</pre>
+</div>
+<p>The task will never be called twice even if it takes longer than the period.</p>
+<p>Note that it is not recommended to use a periodic task with slow tasks (as
+other qimessaging&#8217;s async methods).</p>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qi-periodictask-class-reference">
+<h3>qi::PeriodicTask Class Reference<a class="headerlink" href="#qi-periodictask-class-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p>Control a task executed periodically and asynchronously.   .  <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/periodictask.hpp&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="public-functions">
+<h4>Public Functions<a class="headerlink" href="#public-functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function function-index">
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::setCallback__CallbackCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setCallback</span></tt></a></tt><big>(</big>const Callback&amp; <em>cb</em><big>)</big></dt>
+<dt>
+<span>PeriodicTask&amp;</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::setCallback__TCR.ARG0.X"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setCallback</span></tt></a></tt><big>(</big>const T&amp; <em>callable</em>, ARG0 <em>tracked</em>, <em>...</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::setStrand__qi::StrandP"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setStrand</span></tt></a></tt><big>(</big>qi::Strand* <em>strand</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::setUsPeriod__qi::int64_t"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setUsPeriod</span></tt></a></tt><big>(</big>qi::int64_t <em>usPeriod</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::start__b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">start</span></tt></a></tt><big>(</big>bool <em>immediate</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::trigger"><tt class="xref cpp cpp-func docutils literal"><span class="pre">trigger</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::stop"><tt class="xref cpp cpp-func docutils literal"><span class="pre">stop</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::asyncStop"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asyncStop</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::compensateCallbackTime__b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">compensateCallbackTime</span></tt></a></tt><big>(</big>bool <em>compensate</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::setName__ssCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setName</span></tt></a></tt><big>(</big>const std::string&amp; <em>name</em><big>)</big></dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::isRunningC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isRunning</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::isStoppingC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">isStopping</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::PeriodicTask"><tt class="xref cpp cpp-func docutils literal"><span class="pre">PeriodicTask</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::PeriodicTask::~PeriodicTask"><tt class="xref cpp cpp-func docutils literal"><span class="pre">~PeriodicTask</span></tt></a></tt><big>(</big><big>)</big></dt>
+</dl>
+
+</div>
+<div class="section" id="types">
+<h4>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h4>
+<dl class="type">
+<dt id="TPD_qi::PeriodicTask::Callback">
+<!--[TPD_qi::PeriodicTask::Callback]--><span><em>typedef </em>boost::function&lt; void()&gt;</span> <span>Callback</span><a class="headerlink" href="#TPD_qi::PeriodicTask::Callback" title="Permalink to this definition">¶</a></dt>
+<span>
+
+Callback is a boost::function.         
+
+        </span><dt id="TPD_qi::PeriodicTask::ScheduleCallback">
+<span><em>typedef </em>boost::function&lt; qi::Future&lt; void &gt; const Callback &amp;, qi::Duration delay)&gt;</span> <span>ScheduleCallback</span><a class="headerlink" href="#TPD_qi::PeriodicTask::ScheduleCallback" title="Permalink to this definition">¶</a></dt>
+<span>
+
+        
+
+        </span></dl>
+
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p>Control a task executed periodically and asynchronously.   .</p>
+</div>
+<div class="section" id="function-documentation">
+<h4>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::PeriodicTask::setCallback__CallbackCR">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">setCallback</tt><big>(</big>const Callback&amp; <em>cb</em><big>)</big><a class="headerlink" href="#qi::PeriodicTask::setCallback__CallbackCR" title="Permalink to this definition">¶</a></dt>
+<dd><p>One of the setCallback() functions below must be called before any other operation. Once set the callback cannot be changed. If the callback throws, async task will be stopped</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::setCallback__TCR.ARG0.X">
+PeriodicTask&amp; <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">setCallback</tt><big>(</big>const T&amp; <em>callable</em>, ARG0 <em>tracked</em>, <em>...</em><big>)</big><a class="headerlink" href="#qi::PeriodicTask::setCallback__TCR.ARG0.X" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::setStrand__qi::StrandP">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">setStrand</tt><big>(</big>qi::Strand* <em>strand</em><big>)</big><a class="headerlink" href="#qi::PeriodicTask::setStrand__qi::StrandP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the strand on which to schedule the calls</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::setUsPeriod__qi::int64_t">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">setUsPeriod</tt><big>(</big><a class="reference external" href="types.html#TPD_qi::int64_t">qi::int64_t</a> <em>usPeriod</em><big>)</big><a class="headerlink" href="#qi::PeriodicTask::setUsPeriod__qi::int64_t" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Set the call interval in microseconds. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>usPeriod</strong> &#8211; Period in microsecond. 
+     *  This call will wait until next callback invocation to apply the change.
+     *  Use:
+     *  task.stop();
+     *  task.setUsPeriod()
+     *  task.start()
+     *  to apply the change immediately.
+     *  </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::start__b">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">start</tt><big>(</big>bool <em>immediate</em> = true<big>)</big><a class="headerlink" href="#qi::PeriodicTask::start__b" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Start the periodic task at specified period. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>immediate</strong> &#8211; if true, first schedule of the task will happen with no delay. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>No effect if already running. No effect if called from within the callback.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::trigger">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">trigger</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::PeriodicTask::trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trigger a started periodic task to run right now. Does nothing if the periodic task just ran, is running, starting, stopping or stopped. This function is lockfree.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::stop">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">stop</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::PeriodicTask::stop" title="Permalink to this definition">¶</a></dt>
+<dd><p>When this function returns, the callback will not be called anymore. Can be called from within the callback function.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::asyncStop">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">asyncStop</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::PeriodicTask::asyncStop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request for periodic task to stop asynchronously. Can be safely called from within the callback.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::compensateCallbackTime__b">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">compensateCallbackTime</tt><big>(</big>bool <em>compensate</em><big>)</big><a class="headerlink" href="#qi::PeriodicTask::compensateCallbackTime__b" title="Permalink to this definition">¶</a></dt>
+<dd><p>If argument is true, call interval will take into account call duration to maintain the period.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::setName__ssCR">
+void <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">setName</tt><big>(</big>const std::string&amp; <em>name</em><big>)</big><a class="headerlink" href="#qi::PeriodicTask::setName__ssCR" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Set name for debugging and tracking purpose. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; Name of the periodic task. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::isRunningC">
+bool <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">isRunning</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::PeriodicTask::isRunningC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if task is running </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::isStoppingC">
+bool <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">isStopping</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::PeriodicTask::isStoppingC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">whether state is stopping or stopped</td>
+</tr>
+</tbody>
+</table>
+<p>Can be called from within the callback to know if stop() or asyncStop() was called.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::PeriodicTask">
+ <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">PeriodicTask</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::PeriodicTask::PeriodicTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::PeriodicTask::~PeriodicTask">
+ <tt class="descclassname">qi::PeriodicTask::</tt><tt class="descname">~PeriodicTask</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::PeriodicTask::~PeriodicTask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default destructor.</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="path.html" title="qi::path namespace">qi::path namespace</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">C++ qi API Reference</a>
+   |
+    <a href="preproc.html" title="qi preprocessor macros">qi preprocessor macros</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API References</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ qi API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actor.html">qi::Actor and qi::Strand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">qi::Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applicationsession.html">qi::ApplicationSession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyvalue.html">qi::AnyValue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyfunction.html">qi::AnyFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyobject.html">qi::Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anymodule.html">qi::AnyModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic.html">qi::Atomic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer.html">qi::Buffer, qi::BufferReader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binarycodec.html">Binary Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock.html">qi::Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamicobjectbuilder.html">qi::DynamicObjectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventloop.html">qi::EventLoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="future.html">qi::Promise, qi::Future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocolor.html">qi::IOColor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsoncodec.html">JSON Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">qi::log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macro.html">qi helper macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">qi::MetaObject, qi::MetaMethod, qi::MetaSignal, qi::MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objecttypebuilder.html">qi::ObjectTypeBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="os.html">qi::os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html">qi::path namespace</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">qi::PeriodicTask</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="preproc.html">qi preprocessor macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">qi::Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session.html">qi::Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">qi::Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signature.html">qi::Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">qi::stats namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trackable.html">qi::Trackable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">qi::Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">qi::Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">qi::Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-classindex.html">C++ Class Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-funcindex.html">C++ Function Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python qi API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">qi::PeriodicTask</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a><ul>
+<li><a class="reference internal" href="#using-a-periodic-task">Using a periodic task</a></li>
+<li><a class="reference internal" href="#about-scheduling-and-callback-time-compensation">About scheduling and callback time compensation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#qi-periodictask-class-reference">qi::PeriodicTask Class Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#public-functions">Public Functions</a></li>
+<li><a class="reference internal" href="#types">Types</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="path.html" title="qi::path namespace">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="preproc.html" title="qi preprocessor macros">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

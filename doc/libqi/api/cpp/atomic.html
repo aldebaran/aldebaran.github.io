@@ -1,0 +1,479 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qi::Atomic &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../../index.html" />
+    <link rel="up" title="C++ qi API Reference" href="index.html" />
+    <link rel="next" title="qi::Buffer, qi::BufferReader" href="buffer.html" />
+    <link rel="prev" title="qi::AnyModule" href="anymodule.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>
+         |
+        <a title="Site map" href="../../contents.html">Site map</a>
+         |
+        <a title="Search" href="../../search.html">Search</a>
+         |
+        <a title="Index" href="../../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="anymodule.html" title="qi::AnyModule">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="buffer.html" title="qi::Buffer, qi::BufferReader">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="api-cpp-atomic">
+            
+  <div class="section" id="qi-atomic">
+<h1>qi::Atomic<a class="headerlink" href="#qi-atomic" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="#qi::Atomic" title="qi::Atomic"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::Atomic</span></tt></a> provides support for atomic values, similarly to boost::atomic but
+with simpler methods.</p>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<strong><p class="rubric">Global Namespaces</p>
+</strong><ul>
+<li><p class="first">namespace qi::Atomic&lt;T&gt;</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (namespace qi::Atomic&lt;T&gt;)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::Atomic:T:::mul-operatorC">qi::Atomic&lt;T&gt;::operator*</a><p><a class="reference internal" href="#qi::Atomic:T:::assign-operator__T">qi::Atomic&lt;T&gt;::operator=</a></p>
+<p><a class="reference internal" href="#qi::Atomic:T:::setIfEquals__T.T">qi::Atomic&lt;T&gt;::setIfEquals</a></p>
+<p><a class="reference internal" href="#qi::Atomic:T:::inc-operator">qi::Atomic&lt;T&gt;::operator++</a></p>
+<p><a class="reference internal" href="#qi::Atomic:T:::Atomic">qi::Atomic&lt;T&gt;::Atomic</a></p>
+<p><a class="reference internal" href="#qi::Atomic:T:::swap__T">qi::Atomic&lt;T&gt;::swap</a></p>
+<p><a class="reference internal" href="#qi::Atomic:T:::dec-operator">qi::Atomic&lt;T&gt;::operator&#8211;</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+<strong><p class="rubric">Global Classes</p>
+</strong><ul>
+<li><p class="first">class qi::Atomic</p>
+<dl class="docutils">
+</dl>
+</li>
+</ul>
+</dl>
+</div>
+<div class="section" id="detailed-description">
+<h2>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#qi::Atomic" title="qi::Atomic"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::Atomic</span></tt></a> comes with some macros to do one-time initializations in a
+thread-safe manner.</p>
+<div class="section" id="atomic-operations">
+<h3>Atomic Operations<a class="headerlink" href="#atomic-operations" title="Permalink to this headline">¶</a></h3>
+<p>An atomic variable allows some operations to be atomic in a multithreaded
+environment.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/atomic.hpp&gt;</span>
+
+<span class="n">qi</span><span class="o">::</span><span class="n">Atomic</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">var</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">var</span><span class="p">.</span><span class="n">setIfEquals</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Set to one!&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">boost</span><span class="o">::</span><span class="kr">thread</span><span class="p">(</span><span class="n">myFunction</span><span class="p">);</span>
+  <span class="n">boost</span><span class="o">::</span><span class="kr">thread</span><span class="p">(</span><span class="n">myFunction</span><span class="p">);</span>
+  <span class="n">boost</span><span class="o">::</span><span class="kr">thread</span><span class="p">(</span><span class="n">myFunction</span><span class="p">);</span>
+
+  <span class="n">qi</span><span class="o">::</span><span class="n">os</span><span class="o">::</span><span class="n">msleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This program will always print &#8220;Set to one!&#8221; once, since only one setIfEquals
+can succeed. All methods in <a class="reference internal" href="#qi::Atomic" title="qi::Atomic"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::Atomic</span></tt></a> are atomic and thus threadsafe, they
+all provide a total ordering of operations.</p>
+</div>
+<div class="section" id="qi-once">
+<h3>QI_ONCE<a class="headerlink" href="#qi-once" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">QI_ONCE</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;first initialization&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;doing stuff&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In this code, you have two guarantees:
+- &#8220;first initialization&#8221; will be written only once
+- &#8220;doing stuff&#8221; will never appear before &#8220;first initialization&#8221;</p>
+<p><tt class="xref cpp cpp-guess docutils literal"><span class="pre">QI_ONCE</span></tt> is optimized so that further calls after initialization have the less
+overhead possible.</p>
+<p>You can also put multiple instructions in a <tt class="xref cpp cpp-guess docutils literal"><span class="pre">QI_ONCE</span></tt>.</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">QI_ONCE</span><span class="p">(</span>
+    <span class="n">doStuff</span><span class="p">();</span>
+    <span class="n">doMoreStuff</span><span class="p">();</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+<p>This macro is only useful in C++03 and the function above may be written in
+C++11:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">myFunction</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">once_flag</span> <span class="n">flag</span><span class="p">;</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">call_once</span><span class="p">(</span><span class="n">flag</span><span class="p">,</span>
+      <span class="p">[](){</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;first initialization&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;});</span>
+  <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;doing stuff&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="qi-threadsafe-new">
+<h3>QI_THREADSAFE_NEW<a class="headerlink" href="#qi-threadsafe-new" title="Permalink to this headline">¶</a></h3>
+<p><tt class="xref cpp cpp-guess docutils literal"><span class="pre">QI_THREADSAFE_NEW</span></tt> is there to provide a safe static initialization of
+variables in C++03. Its most common use case is the following:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">threadSafeFunction</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="n">boost</span><span class="o">::</span><span class="n">mutex</span><span class="o">*</span> <span class="n">mutex</span><span class="p">;</span> <span class="c1">// = 0 is optional</span>
+  <span class="n">QI_THREADSAFE_NEW</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+  <span class="n">boost</span><span class="o">::</span><span class="n">mutex</span><span class="o">::</span><span class="n">scoped_lock</span> <span class="n">l</span><span class="p">(</span><span class="o">*</span><span class="n">mutex</span><span class="p">);</span>
+  <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Using a simple <tt class="xref cpp cpp-guess docutils literal"><span class="pre">static</span> <span class="pre">boost::mutex</span></tt> does not guarantee safe initialization in
+a multithreaded environment in C++03 (even though GCC&#8217;s implementation is
+safe), that&#8217;s why <tt class="xref cpp cpp-guess docutils literal"><span class="pre">QI_THREADSAFE_NEW</span></tt> is needed.</p>
+<p>In C++11, the following is safe:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="k">static</span> <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vec</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">threadSafeFunction</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">static</span> <span class="n">boost</span><span class="o">::</span><span class="n">mutex</span> <span class="n">mutex</span><span class="p">;</span>
+  <span class="n">boost</span><span class="o">::</span><span class="n">mutex</span><span class="o">::</span><span class="n">scoped_lock</span> <span class="n">l</span><span class="p">(</span><span class="n">mutex</span><span class="p">);</span>
+  <span class="n">vec</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qi-atomic-class-reference">
+<h3>qi::Atomic Class Reference<a class="headerlink" href="#qi-atomic-class-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p> <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;qi/atomic.hpp&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="public-members">
+<h4>Public Members<a class="headerlink" href="#public-members" title="Permalink to this headline">¶</a></h4>
+<dl class="function function-index">
+<dt>
+<span>boost::atomic&lt;T&gt;</span> <tt class="descname"><tt class="xref cpp cpp-func docutils literal"><span class="pre">_value</span></tt></tt></dt>
+</dl>
+
+</div>
+<div class="section" id="public-functions">
+<h4>Public Functions<a class="headerlink" href="#public-functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function function-index">
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::Atomic"><tt class="xref cpp cpp-func docutils literal"><span class="pre">Atomic</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::Atomic__T"><tt class="xref cpp cpp-func docutils literal"><span class="pre">Atomic</span></tt></a></tt><big>(</big>T <em>value</em><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::Atomic__AtomicCR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">Atomic</span></tt></a></tt><big>(</big>const Atomic&amp; <em>other</em><big>)</big></dt>
+<dt>
+<span>T</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::inc-operator"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator++</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>T</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::dec-operator"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator--</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>Atomic&lt;T&gt;&amp;</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::assign-operator__T"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator=</span></tt></a></tt><big>(</big>T <em>value</em><big>)</big></dt>
+<dt>
+<span>Atomic&lt;T&gt;&amp;</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::assign-operator__Atomic:T:CR"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator=</span></tt></a></tt><big>(</big>const Atomic&lt;T&gt;&amp; <em>value</em><big>)</big></dt>
+<dt>
+<span>bool</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::setIfEquals__T.T"><tt class="xref cpp cpp-func docutils literal"><span class="pre">setIfEquals</span></tt></a></tt><big>(</big>T <em>testValue</em>, T <em>setValue</em><big>)</big></dt>
+<dt>
+<span>T</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::swap__T"><tt class="xref cpp cpp-func docutils literal"><span class="pre">swap</span></tt></a></tt><big>(</big>T <em>value</em><big>)</big></dt>
+<dt>
+<span>T</span> <tt class="descname"><a class="reference external" href="#qi::Atomic:T:::mul-operatorC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">operator*</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+</dl>
+
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p><p>Atomic operations on integrals.</p>
+<p>This class allows to do operations on an integral value from multiple threads, with the guarantee that each operation will not lead to a data race.</p>
+</p>
+</div>
+<div class="section" id="function-documentation">
+<h4>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::Atomic:T:::Atomic">
+ <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">Atomic</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::Atomic:T:::Atomic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::Atomic__T">
+ <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">Atomic</tt><big>(</big>T <em>value</em><big>)</big><a class="headerlink" href="#qi::Atomic:T:::Atomic__T" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>value</strong> &#8211; The default value of the atomic. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Atomic constructor setting value to its parameter.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::Atomic__AtomicCR">
+ <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">Atomic</tt><big>(</big>const Atomic&amp; <em>other</em><big>)</big><a class="headerlink" href="#qi::Atomic:T:::Atomic__AtomicCR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::inc-operator">
+T <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">operator++</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::Atomic:T:::inc-operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic increment of the value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::dec-operator">
+T <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">operator--</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::Atomic:T:::dec-operator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Atomic decement of the value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::assign-operator__T">
+Atomic&lt;T&gt;&amp; <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">operator=</tt><big>(</big>T <em>value</em><big>)</big><a class="headerlink" href="#qi::Atomic:T:::assign-operator__T" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::assign-operator__Atomic:T:CR">
+Atomic&lt;T&gt;&amp; <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">operator=</tt><big>(</big>const Atomic&lt;T&gt;&amp; <em>value</em><big>)</big><a class="headerlink" href="#qi::Atomic:T:::assign-operator__Atomic:T:CR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::setIfEquals__T.T">
+bool <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">setIfEquals</tt><big>(</big>T <em>testValue</em>, T <em>setValue</em><big>)</big><a class="headerlink" href="#qi::Atomic:T:::setIfEquals__T.T" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">true if swap was performed </td>
+</tr>
+</tbody>
+</table>
+<p>If value is testValue, replace it with setValue.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::swap__T">
+T <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">swap</tt><big>(</big>T <em>value</em><big>)</big><a class="headerlink" href="#qi::Atomic:T:::swap__T" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the previously held value </td>
+</tr>
+</tbody>
+</table>
+<p>Swap the atomic value with value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::Atomic:T:::mul-operatorC">
+T <tt class="descclassname">qi::Atomic&lt;T&gt;::</tt><tt class="descname">operator*</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::Atomic:T:::mul-operatorC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the contained value</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="anymodule.html" title="qi::AnyModule">qi::AnyModule</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">C++ qi API Reference</a>
+   |
+    <a href="buffer.html" title="qi::Buffer, qi::BufferReader">qi::Buffer, qi::BufferReader</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API References</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ qi API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actor.html">qi::Actor and qi::Strand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">qi::Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applicationsession.html">qi::ApplicationSession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyvalue.html">qi::AnyValue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyfunction.html">qi::AnyFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyobject.html">qi::Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anymodule.html">qi::AnyModule</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">qi::Atomic</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="buffer.html">qi::Buffer, qi::BufferReader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binarycodec.html">Binary Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock.html">qi::Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamicobjectbuilder.html">qi::DynamicObjectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventloop.html">qi::EventLoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="future.html">qi::Promise, qi::Future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocolor.html">qi::IOColor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsoncodec.html">JSON Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">qi::log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macro.html">qi helper macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">qi::MetaObject, qi::MetaMethod, qi::MetaSignal, qi::MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objecttypebuilder.html">qi::ObjectTypeBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="os.html">qi::os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html">qi::path namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="periodictask.html">qi::PeriodicTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preproc.html">qi preprocessor macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">qi::Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session.html">qi::Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">qi::Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signature.html">qi::Signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stats.html">qi::stats namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trackable.html">qi::Trackable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">qi::Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">qi::Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">qi::Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-classindex.html">C++ Class Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-funcindex.html">C++ Function Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python qi API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">qi::Atomic</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a><ul>
+<li><a class="reference internal" href="#atomic-operations">Atomic Operations</a></li>
+<li><a class="reference internal" href="#qi-once">QI_ONCE</a></li>
+<li><a class="reference internal" href="#qi-threadsafe-new">QI_THREADSAFE_NEW</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#qi-atomic-class-reference">qi::Atomic Class Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#public-members">Public Members</a></li>
+<li><a class="reference internal" href="#public-functions">Public Functions</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="anymodule.html" title="qi::AnyModule">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="buffer.html" title="qi::Buffer, qi::BufferReader">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

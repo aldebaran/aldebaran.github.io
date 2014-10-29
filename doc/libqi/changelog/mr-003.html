@@ -1,0 +1,251 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Merge Request #3 - August 2014 bis &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../index.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../index.html">Home</a>
+         |
+        <a title="Site map" href="../contents.html">Site map</a>
+         |
+        <a title="Search" href="../search.html">Search</a>
+         |
+        <a title="Index" href="../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    <a title="qi SDK Documentation 2.2.0.55 documentation" href="../index.html" accesskey="U">up</a></div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="changelog-mr-003">
+            
+  <div class="section" id="merge-request-3-august-2014-bis">
+<h1>Merge Request #3 - August 2014 bis<a class="headerlink" href="#merge-request-3-august-2014-bis" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This release is again about bugfixes, test fixes and documentation improvement,
+with some small features.</p>
+</div>
+<div class="section" id="small-changes">
+<h2>Small Changes<a class="headerlink" href="#small-changes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>AnyFunction was documented and a call method was added for easier use.</li>
+<li>Some static initialization races were fixed in the type system, it should fix
+a lot of Choregraphe crashes on Windows.</li>
+<li>Session::loadService now accepts extra arguments to give to the factory (if,
+in addition to all of the arguments, the factory accepts a qi::Session as a
+first argument, it will be given to it).</li>
+<li><em>qi/qi.hpp</em> is now deprecated. The only function it contained was
+<tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::unicodeFacet</span></tt> which was useful when used with <tt class="docutils literal"><span class="pre">boost::path</span></tt>. If you
+really need it, this function was moved to <em>qi/path.hpp</em>. You should also
+consider using <a class="reference internal" href="../api/cpp/path.html#qi::Path" title="qi::Path"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::Path</span></tt></a> instead.</li>
+<li><a class="reference internal" href="../api/cpp/atomic.html#qi::Atomic" title="qi::Atomic"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::Atomic</span></tt></a> is now implemented as a wrapper over <tt class="docutils literal"><span class="pre">boost::atomic</span></tt> and thus
+supports other types than <tt class="docutils literal"><span class="pre">int</span></tt>.</li>
+<li><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::ScopedThreadName</span></tt> allow to set the current thread name in a RAII fashion</li>
+<li><a class="reference internal" href="../api/cpp/session.html#qi::Session::waitForService__ssCR" title="qi::Session::waitForService"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::Session::waitForService</span></tt></a> now returns a cancellable future.</li>
+<li>Python signals can now have an onSubscribers callback (as in C++). See
+<a class="reference internal" href="../api/python/signal.html#api-py-signal-lazyenable"><em>documentation</em></a>.</li>
+<li>Python properties have been improved. <tt class="docutils literal"><span class="pre">addCallback()</span></tt> now returns a link
+that you can use with <tt class="docutils literal"><span class="pre">disconnect()</span></tt>.</li>
+</ul>
+</div>
+<div class="section" id="sdk-path">
+<h2>SDK Path<a class="headerlink" href="#sdk-path" title="Permalink to this headline">¶</a></h2>
+<p>The SDK paths returned by libqi (in all <a class="reference external" href="../api/cpp/path.html#qi::path"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::path</span></tt></a> methods, like
+<a class="reference internal" href="../api/cpp/path.html#qi::path::findLib__ssCR" title="qi::path::findLib"><tt class="xref cpp cpp-guess docutils literal"><span class="pre">qi::path::findLib</span></tt></a>) are no longer deduced from the running executable
+(<em>/proc/self/exe</em> on Linux) but from
+argv[0]. This change <em>should</em> not break existing code since usually the
+executable is the same as argv[0].</p>
+<p>However, this implies changes for Python in case of deploys. Currently, the
+returned paths were always taken from <em>/usr</em> since the executable was
+<em>/usr/bin/python2.7</em>. They will now be deduced relatively to the python script
+if it is located in a SDK, with a fallback to the old behavior.  This is useful
+for dynamic module loading.</p>
+</div>
+<div class="section" id="logmanager">
+<h2>LogManager<a class="headerlink" href="#logmanager" title="Permalink to this headline">¶</a></h2>
+<p>The LogManager now holds a ring buffer that allows to get past logs coming
+before you register your LogListener to it.</p>
+<ul class="simple">
+<li>There is a ring buffer of 500 messages.</li>
+<li>You can get it by subscribing to onLogMessagesWithBacklog.</li>
+</ul>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="kt">void</span> <span class="nf">onLogMessages</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">qi</span><span class="o">::</span><span class="n">LogMessage</span><span class="o">&gt;</span> <span class="n">msgs</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">msgs</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+  <span class="p">{</span>
+    <span class="n">qi</span><span class="o">::</span><span class="n">LogMessage</span> <span class="n">msg</span> <span class="o">=</span> <span class="n">msgs</span><span class="p">.</span><span class="n">at</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">stringstream</span> <span class="n">ss</span><span class="p">;</span>
+    <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">level</span>
+       <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">category</span>
+       <span class="o">&lt;&lt;</span> <span class="s">&quot; &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span><span class="p">.</span><span class="n">message</span>
+       <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">)</span>
+<span class="p">{</span>
+  <span class="n">qi</span><span class="o">::</span><span class="n">ApplicationSession</span> <span class="n">app</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+  <span class="n">app</span><span class="p">.</span><span class="n">start</span><span class="p">();</span>
+
+  <span class="n">app</span><span class="p">.</span><span class="n">loadModule</span><span class="p">(</span><span class="s">&quot;qicore&quot;</span><span class="p">);</span>
+
+  <span class="n">qi</span><span class="o">::</span><span class="n">LogListenerPtr</span> <span class="n">listener</span> <span class="o">=</span> <span class="n">logger</span><span class="o">-&gt;</span><span class="n">getListener</span><span class="p">();</span>
+
+  <span class="n">listener</span><span class="o">-&gt;</span><span class="n">onLogMessagesWithBacklog</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="o">&amp;</span><span class="n">onLogMessages</span><span class="p">);</span>
+  <span class="n">app</span><span class="p">.</span><span class="n">run</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="bug-fixes">
+<h2>Bug fixes<a class="headerlink" href="#bug-fixes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="python-object-registration-error">
+<h3>Python object registration error<a class="headerlink" href="#python-object-registration-error" title="Permalink to this headline">¶</a></h3>
+<p>The errors:</p>
+<div class="highlight-python"><pre>[E] 6298 qipy.object: Error while registering function '__str__': TypeError: &lt;method-wrapper '__str__' of MenuCook object at 0xb588f5ac&gt; is not a Python function</pre>
+</div>
+<p>are now fixed.</p>
+</div>
+<div class="section" id="signal-connection-bug">
+<h3>Signal connection bug<a class="headerlink" href="#signal-connection-bug" title="Permalink to this headline">¶</a></h3>
+<p>In the following code:</p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="n">qi</span><span class="o">::</span><span class="n">AnyObject</span> <span class="n">obj</span> <span class="o">=</span> <span class="p">...;</span>
+<span class="n">obj</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span><span class="s">&quot;signal&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">myCallback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">myCallback</span></tt> would be called synchronously by the signal handler. It will now
+be called asynchronously as the user would expect.</p>
+</div>
+<div class="section" id="redmine-issues">
+<h3>Redmine issues<a class="headerlink" href="#redmine-issues" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://redmine/issues/16461">https://redmine/issues/16461</a></li>
+<li><a class="reference external" href="https://redmine/issues/17970">https://redmine/issues/17970</a></li>
+<li><a class="reference external" href="https://redmine/issues/15310">https://redmine/issues/15310</a></li>
+<li><a class="reference external" href="https://redmine/issues/20594">https://redmine/issues/20594</a></li>
+<li><a class="reference external" href="https://redmine/issues/24281">https://redmine/issues/24281</a></li>
+<li><a class="reference external" href="https://redmine/issues/24333">https://redmine/issues/24333</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    <a title="qi SDK Documentation 2.2.0.55 documentation" href="../index.html" accesskey="U">up</a></div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">Merge Request #3 - August 2014 bis</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#small-changes">Small Changes</a></li>
+<li><a class="reference internal" href="#sdk-path">SDK Path</a></li>
+<li><a class="reference internal" href="#logmanager">LogManager</a></li>
+<li><a class="reference internal" href="#bug-fixes">Bug fixes</a><ul>
+<li><a class="reference internal" href="#python-object-registration-error">Python object registration error</a></li>
+<li><a class="reference internal" href="#signal-connection-bug">Signal connection bug</a></li>
+<li><a class="reference internal" href="#redmine-issues">Redmine issues</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    <a title="qi SDK Documentation 2.2.0.55 documentation" href="../index.html" accesskey="U">up</a></div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>

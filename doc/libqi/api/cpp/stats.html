@@ -1,0 +1,523 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>qi::stats namespace &mdash; qi SDK Documentation 2.2.0.55 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '2.2.0.55',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  false
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="qi SDK Documentation 2.2.0.55 documentation" href="../../index.html" />
+    <link rel="up" title="C++ qi API Reference" href="index.html" />
+    <link rel="next" title="qi::Trackable" href="trackable.html" />
+    <link rel="prev" title="qi::Signature" href="signature.html" />
+ 
+<script>
+$(window).ready(function () {
+    var width_label = 0;
+    $('dl.function-index dt > span').each(function () {
+        $(this).css('width', 'auto');
+        width_label = Math.max(width_label, $(this).width());
+    }).width(width_label + 30);
+    $('.sig-paren').width('auto');
+})
+
+</script>
+
+
+<script type="text/javascript" src="/static/js/ga-status.js"></script>
+
+
+
+  </head>
+  <body>
+
+    <div class="document">
+  <div id="custom-doc" class="yui-t3">
+    <div id="hd">
+      <h1><a href="../../index.html">qi SDK Documentation 2.2.0.55 documentation</a></h1>
+      <div id="global-nav">
+        <a title="Home page" href="../../index.html">Home</a>
+         |
+        <a title="Site map" href="../../contents.html">Site map</a>
+         |
+        <a title="Search" href="../../search.html">Search</a>
+         |
+        <a title="Index" href="../../genindex.html">Index</a>
+      </div>
+      <div class="nav">
+    &laquo; <a href="signature.html" title="qi::Signature">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="trackable.html" title="qi::Trackable">next</a> &raquo;</div>
+    </div>
+
+    <div id="bd">
+      <div id="yui-main">
+        <div class="yui-b">
+          <div class="yui-g" id="api-cpp-stats">
+            
+  <div class="section" id="qi-stats-namespace">
+<h1>qi::stats namespace<a class="headerlink" href="#qi-stats-namespace" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<strong><p class="rubric">Global Classes</p>
+</strong><ul>
+<li><p class="first">class qi::MethodStatistics</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (class qi::MethodStatistics)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::MethodStatistics::push__float.float.float">qi::MethodStatistics::push</a><p><a class="reference internal" href="#qi::MethodStatistics::MethodStatistics">qi::MethodStatistics::MethodStatistics</a></p>
+<p><a class="reference internal" href="#qi::MethodStatistics::reset">qi::MethodStatistics::reset</a></p>
+<p><a class="reference internal" href="#qi::MethodStatistics::countC">qi::MethodStatistics::count</a></p>
+<p><a class="reference internal" href="#qi::MethodStatistics::systemC">qi::MethodStatistics::system</a></p>
+<p><a class="reference internal" href="#qi::MethodStatistics::userC">qi::MethodStatistics::user</a></p>
+<p><a class="reference internal" href="#qi::MethodStatistics::wallC">qi::MethodStatistics::wall</a></p>
+</ul>
+</dl>
+</li>
+<li><p class="first">class qi::MinMaxSum</p>
+<dl class="docutils">
+<strong><p class="rubric">Functions (class qi::MinMaxSum)</p>
+</strong><ul class="simple">
+<a class="reference internal" href="#qi::MinMaxSum::asString__unsigned-iC">qi::MinMaxSum::asString</a><p><a class="reference internal" href="#qi::MinMaxSum::MinMaxSum">qi::MinMaxSum::MinMaxSum</a></p>
+<p><a class="reference internal" href="#qi::MinMaxSum::reset">qi::MinMaxSum::reset</a></p>
+<p><a class="reference internal" href="#qi::MinMaxSum::cumulatedValueC">qi::MinMaxSum::cumulatedValue</a></p>
+<p><a class="reference internal" href="#qi::MinMaxSum::maxValueC">qi::MinMaxSum::maxValue</a></p>
+<p><a class="reference internal" href="#qi::MinMaxSum::minValueC">qi::MinMaxSum::minValue</a></p>
+<p><a class="reference internal" href="#qi::MinMaxSum::push__float.b">qi::MinMaxSum::push</a></p>
+</ul>
+</dl>
+</li>
+</ul>
+</dl>
+</div>
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="qi-minmaxsum-class-reference">
+<h3>qi::MinMaxSum Class Reference<a class="headerlink" href="#qi-minmaxsum-class-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p>Stores min, max and sum of values fed to it.  <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="public-functions">
+<h4>Public Functions<a class="headerlink" href="#public-functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function function-index">
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::MinMaxSum"><tt class="xref cpp cpp-func docutils literal"><span class="pre">MinMaxSum</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::MinMaxSum__float.float.float"><tt class="xref cpp cpp-func docutils literal"><span class="pre">MinMaxSum</span></tt></a></tt><big>(</big>float <em>minValue</em>, float <em>maxValue</em>, float <em>cumulatedValue</em><big>)</big></dt>
+<dt>
+<span>const float&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::minValueC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">minValue</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>const float&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::maxValueC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">maxValue</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>const float&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::cumulatedValueC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">cumulatedValue</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::push__float.b"><tt class="xref cpp cpp-func docutils literal"><span class="pre">push</span></tt></a></tt><big>(</big>float <em>val</em>, bool <em>init</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::reset"><tt class="xref cpp cpp-func docutils literal"><span class="pre">reset</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span>std::string</span> <tt class="descname"><a class="reference external" href="#qi::MinMaxSum::asString__unsigned-iC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">asString</span></tt></a></tt><big>(</big>unsigned int <em>count</em><big>)</big> const</dt>
+</dl>
+
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p>Stores min, max and sum of values fed to it.</p>
+</div>
+<div class="section" id="function-documentation">
+<h4>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::MinMaxSum::MinMaxSum">
+ <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">MinMaxSum</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::MinMaxSum::MinMaxSum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Default constructor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::MinMaxSum__float.float.float">
+ <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">MinMaxSum</tt><big>(</big>float <em>minValue</em>, float <em>maxValue</em>, float <em>cumulatedValue</em><big>)</big><a class="headerlink" href="#qi::MinMaxSum::MinMaxSum__float.float.float" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Constructor. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>minValue</strong> &#8211; Minimum value. </li>
+<li><strong>maxValue</strong> &#8211; Maximum value. </li>
+<li><strong>cumulatedValue</strong> &#8211; Sum of all value add to the class. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::minValueC">
+const float&amp; <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">minValue</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MinMaxSum::minValueC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get minimum value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::maxValueC">
+const float&amp; <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">maxValue</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MinMaxSum::maxValueC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get maximum value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::cumulatedValueC">
+const float&amp; <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">cumulatedValue</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MinMaxSum::cumulatedValueC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get sum of all value push value.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::push__float.b">
+void <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">push</tt><big>(</big>float <em>val</em>, bool <em>init</em> = false<big>)</big><a class="headerlink" href="#qi::MinMaxSum::push__float.b" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Push a new value, process new min/max and add the value to cumulated. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>val</strong> &#8211; New value. </li>
+<li><strong>init</strong> &#8211; If true init min, max, cumulated to val </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::reset">
+void <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::MinMaxSum::reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset all three values to 0.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MinMaxSum::asString__unsigned-iC">
+std::string <tt class="descclassname">qi::MinMaxSum::</tt><tt class="descname">asString</tt><big>(</big>unsigned int <em>count</em><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MinMaxSum::asString__unsigned-iC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>asString Get a string from min, max and cumulated. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>count</strong> &#8211; Devide cumulated by count. </li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">A string with format (cumulated / count), min and max In this order separated by space. </p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="qi-methodstatistics-class-reference">
+<h3>qi::MethodStatistics Class Reference<a class="headerlink" href="#qi-methodstatistics-class-reference" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="introduction">
+<h4>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h4>
+<p>Store statistics about method calls.  <a class="reference external" href="#detailed-description"><tt class="docutils literal"><span class="pre">More...</span></tt></a></p>
+<div class="highlight-cpp"><div class="highlight"><pre><span class="cp">#include &lt;&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+</ul>
+</div>
+<div class="section" id="public-functions">
+<h4>Public Functions<a class="headerlink" href="#public-functions" title="Permalink to this headline">¶</a></h4>
+<dl class="function function-index">
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::MethodStatistics"><tt class="xref cpp cpp-func docutils literal"><span class="pre">MethodStatistics</span></tt></a></tt><big>(</big><big>)</big></dt>
+<dt>
+<span></span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::MethodStatistics__unsigned-i.MinMaxSum.MinMaxSum.MinMaxSum"><tt class="xref cpp cpp-func docutils literal"><span class="pre">MethodStatistics</span></tt></a></tt><big>(</big>unsigned int <em>count</em>, MinMaxSum <em>wall</em>, MinMaxSum <em>user</em>, MinMaxSum <em>system</em><big>)</big></dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::push__float.float.float"><tt class="xref cpp cpp-func docutils literal"><span class="pre">push</span></tt></a></tt><big>(</big>float <em>wall</em>, float <em>user</em>, float <em>system</em><big>)</big></dt>
+<dt>
+<span>const MinMaxSum&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::wallC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">wall</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>const MinMaxSum&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::userC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">user</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>const MinMaxSum&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::systemC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">system</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>unsigned int&amp;</span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::countC"><tt class="xref cpp cpp-func docutils literal"><span class="pre">count</span></tt></a></tt><big>(</big><big>)</big> const</dt>
+<dt>
+<span>void</span> <tt class="descname"><a class="reference external" href="#qi::MethodStatistics::reset"><tt class="xref cpp cpp-func docutils literal"><span class="pre">reset</span></tt></a></tt><big>(</big><big>)</big></dt>
+</dl>
+
+</div>
+<div class="section" id="detailed-description">
+<h4>Detailed Description<a class="headerlink" href="#detailed-description" title="Permalink to this headline">¶</a></h4>
+<p>Store statistics about method calls.</p>
+</div>
+<div class="section" id="function-documentation">
+<h4>Function Documentation<a class="headerlink" href="#function-documentation" title="Permalink to this headline">¶</a></h4>
+<dl class="function">
+<dt id="qi::MethodStatistics::MethodStatistics">
+ <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">MethodStatistics</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::MethodStatistics::MethodStatistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::MethodStatistics__unsigned-i.MinMaxSum.MinMaxSum.MinMaxSum">
+ <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">MethodStatistics</tt><big>(</big>unsigned int <em>count</em>, MinMaxSum <em>wall</em>, MinMaxSum <em>user</em>, MinMaxSum <em>system</em><big>)</big><a class="headerlink" href="#qi::MethodStatistics::MethodStatistics__unsigned-i.MinMaxSum.MinMaxSum.MinMaxSum" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Constructor and Set. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>count</strong> &#8211; Number of value added. </li>
+<li><strong>wall</strong> &#8211; Wall statistics. </li>
+<li><strong>user</strong> &#8211; User statistics. </li>
+<li><strong>system</strong> &#8211; System statistics. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::push__float.float.float">
+void <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">push</tt><big>(</big>float <em>wall</em>, float <em>user</em>, float <em>system</em><big>)</big><a class="headerlink" href="#qi::MethodStatistics::push__float.float.float" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Add value for all tree statistics values. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>wall</strong> &#8211; Value to add to wall statistics. </li>
+<li><strong>user</strong> &#8211; Value to add to user statistics. </li>
+<li><strong>system</strong> &#8211; Value to add to system statistics. </li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>If it&#8217;s the fist time that push is call, min, max and cumulated will be set to the value added.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::wallC">
+const MinMaxSum&amp; <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">wall</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MethodStatistics::wallC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get wall MinMaxSum value. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return MinMaxSum value. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::userC">
+const MinMaxSum&amp; <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">user</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MethodStatistics::userC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get user MinMaxSum value. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return MinMaxSum value. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::systemC">
+const MinMaxSum&amp; <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">system</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MethodStatistics::systemC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get system MinMaxSum value. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return MinMaxSum value. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::countC">
+unsigned int&amp; <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">count</tt><big>(</big><big>)</big><tt class="descclassname"> const</tt><a class="headerlink" href="#qi::MethodStatistics::countC" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Brief: </em>Get number of value added. </p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Return number of value pushed. </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="qi::MethodStatistics::reset">
+void <tt class="descclassname">qi::MethodStatistics::</tt><tt class="descname">reset</tt><big>(</big><big>)</big><a class="headerlink" href="#qi::MethodStatistics::reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset all value to 0 (count and MinMaxSum of all 3 statistics values)</p>
+</dd></dl>
+
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+          <div class="footernav">
+    &laquo; <a href="signature.html" title="qi::Signature">qi::Signature</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">C++ qi API Reference</a>
+   |
+    <a href="trackable.html" title="qi::Trackable">qi::Trackable</a> &raquo;</div>
+        </div>
+      </div>
+      
+        
+          <div class="yui-b" id="sidebar">
+            
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+  <h3>Table Of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">API References</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">C++ qi API Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="actor.html">qi::Actor and qi::Strand</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">qi::Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="applicationsession.html">qi::ApplicationSession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyvalue.html">qi::AnyValue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyfunction.html">qi::AnyFunction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anyobject.html">qi::Object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="anymodule.html">qi::AnyModule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic.html">qi::Atomic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="buffer.html">qi::Buffer, qi::BufferReader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="binarycodec.html">Binary Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock.html">qi::Clock</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dynamicobjectbuilder.html">qi::DynamicObjectBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="eventloop.html">qi::EventLoop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="future.html">qi::Promise, qi::Future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocolor.html">qi::IOColor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jsoncodec.html">JSON Codec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">qi::log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="macro.html">qi helper macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="metaobject.html">qi::MetaObject, qi::MetaMethod, qi::MetaSignal, qi::MetaProperty</a></li>
+<li class="toctree-l3"><a class="reference internal" href="objecttypebuilder.html">qi::ObjectTypeBuilder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="os.html">qi::os</a></li>
+<li class="toctree-l3"><a class="reference internal" href="path.html">qi::path namespace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="periodictask.html">qi::PeriodicTask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="preproc.html">qi preprocessor macros</a></li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">qi::Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="session.html">qi::Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">qi::Signal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signature.html">qi::Signature</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">qi::stats namespace</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="trackable.html">qi::Trackable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="translator.html">qi::Translator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="types.html">Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="url.html">qi::Url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="version.html">qi::Version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-classindex.html">C++ Class Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cpp-funcindex.html">C++ Function Index</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../python/index.html">Python qi API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guide/index.html">User Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design Documents</a></li>
+</ul>
+
+    <h3><a href="../../index.html">On this page</a></h3>
+    <ul>
+<li><a class="reference internal" href="#">qi::stats namespace</a><ul>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#reference">Reference</a><ul>
+<li><a class="reference internal" href="#qi-minmaxsum-class-reference">qi::MinMaxSum Class Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#public-functions">Public Functions</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#qi-methodstatistics-class-reference">qi::MethodStatistics Class Reference</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#public-functions">Public Functions</a></li>
+<li><a class="reference internal" href="#detailed-description">Detailed Description</a></li>
+<li><a class="reference internal" href="#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+          </div>
+        
+      
+    </div>
+
+    <div id="ft">
+      <div class="nav">
+    &laquo; <a href="signature.html" title="qi::Signature">previous</a>
+     |
+    <a href="index.html" title="C++ qi API Reference" accesskey="U">up</a>
+   |
+    <a href="trackable.html" title="qi::Trackable">next</a> &raquo;</div>
+    </div>
+  </div>
+
+      <div class="clearer"></div>
+    </div>
+  </body>
+</html>
